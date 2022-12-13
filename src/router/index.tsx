@@ -1,7 +1,17 @@
-import { RouteObject } from 'react-router-dom'
 import { basicsRoutes } from './basicsRoutes'
 import { asyncRoutes, errorRoutes } from './asyncRoutes'
 
-const router: RouteObject[] = [...basicsRoutes, ...errorRoutes, ...asyncRoutes]
+export interface IRoute {
+  path: string
+  name?: string
+  element?: JSX.Element
+  meta?: {
+    title?: string
+    icon?: JSX.Element
+    hide?: boolean
+    sort?: number
+  }
+  children?: IRoute[]
+}
 
-export default router
+export { basicsRoutes, errorRoutes, asyncRoutes }

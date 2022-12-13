@@ -1,29 +1,27 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Button, Form, Input } from 'antd'
-import { useNavigate, useLocation } from 'react-router-dom'
-type TForm = { username: string | number; password: string | number }
+import { useNavigate } from 'react-router-dom'
+import { ILoginForm } from '@/interface/user'
+import { useAppDispatch } from '@/hooks/redux'
+import { setToken } from '@/store/user/actions'
 
 const Login: React.FC = () => {
-  const info = useLocation()
-  useEffect(() => {
-    console.log(info)
-  }, [])
-  const [form] = useState<TForm>({ username: '', password: '' })
+  const dispath = useAppDispatch()
+  const [form] = useState<ILoginForm>({ username: '', password: '' })
   const [loading, setLoading] = useState<boolean>(false)
   const [formRef] = Form.useForm()
   const navigate = useNavigate()
   const setDefalut = (role: string) => {
     formRef.setFieldsValue({ username: role, password: role })
   }
-  const onFinish = (values: TForm) => {
-    console.log(values)
+  const onFinish = async (values: ILoginForm) => {
+    if (!(values.username === 'admin' || values.username === 'test')) return
     setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
-      navigate('/', {
-        replace: true
-      })
-    }, 2000)
+    await dispath(setToken(values))
+    setLoading(false)
+    navigate('/', {
+      replace: true
+    })
   }
 
   const onFinishFailed = (errorInfo: unknown) => {
@@ -42,6 +40,9 @@ const Login: React.FC = () => {
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
           >
+            <Form.Item>
+              <div className="text-8 font-bold p-b-10 text-#5B86E5">木子</div>
+            </Form.Item>
             <Form.Item
               label=""
               name="username"

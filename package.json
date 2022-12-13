@@ -12,15 +12,22 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
+    "@redux-devtools/extension": "^3.2.3",
     "antd": "^5.0.3",
+    "lodash-es": "^4.17.21",
     "normalize.css": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.4.4"
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.4.4",
+    "redux": "^4.2.0",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.4.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.2.0",
     "@commitlint/config-conventional": "^17.2.0",
+    "@types/lodash-es": "^4.17.6",
     "@types/node": "^18.11.10",
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",

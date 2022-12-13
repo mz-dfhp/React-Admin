@@ -1,14 +1,70 @@
-import { useNavigate } from 'react-router-dom'
-import { Button } from 'antd'
+import { useNavigate, useParams } from 'react-router-dom'
+import { useAppSelector, useAppDispatch } from '@/hooks/redux'
+import { Button, Card } from 'antd'
+import { increment, decrement } from '@/store/count/actions'
+
 export default function Index() {
+  const store = useAppSelector((state) => state.countStore)
+  const dispatch = useAppDispatch()
+  const changeCount = (flag: boolean) => {
+    console.log(params)
+    if (flag) {
+      dispatch(increment())
+    } else {
+      dispatch(decrement())
+    }
+  }
   const navigate = useNavigate()
+  const params = useParams()
   const goToPage = (path: string) => {
     navigate(path)
   }
   return (
     <div>
-      <Button onClick={() => goToPage('/login')}>login</Button>
-      <Button onClick={() => goToPage('/demo/demo-one')}>demo</Button>
+      <Card>
+        <Button type="primary">{store.count}</Button>
+      </Card>
+      <Card>
+        <Button type="primary">{store.count}</Button>
+      </Card>
+      <Card>
+        <Button type="primary">{store.count}</Button>
+      </Card>
+      <Card>
+        <Button type="primary">{store.count}</Button>
+      </Card>
+      <Card>
+        <Button type="primary">{store.count}</Button>
+      </Card>
+      <Card>
+        <Button type="primary">{store.count}</Button>
+      </Card>
+      <Card>
+        <Button type="primary">{store.count}</Button>
+      </Card>
+      <br />
+      <br />
+      <Button type="primary" onClick={() => goToPage('/login')}>
+        login
+      </Button>
+      <br />
+      <br />
+      <Button
+        type="primary"
+        onClick={() => goToPage('/demo/demo-one/demo-one-son?id=1')}
+      >
+        demo
+      </Button>
+      <br />
+      <br />
+      <Button type="primary" onClick={() => changeCount(true)}>
+        +
+      </Button>
+      <br />
+      <br />
+      <Button type="primary" onClick={() => changeCount(false)}>
+        -
+      </Button>
     </div>
   )
 }
