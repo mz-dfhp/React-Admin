@@ -21,7 +21,8 @@ module.exports = {
   rules: {
     'prettier/prettier': ['error', { endOfLine: 'auto' }],
     'arrow-body-style': 'off',
-    'prefer-arrow-callback': 'off'
+    'prefer-arrow-callback': 'off',
+    '@typescript-eslint/no-explicit-any': ['off']
   },
   settings: {
     react: {

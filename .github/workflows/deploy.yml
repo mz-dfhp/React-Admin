@@ -1,0 +1,28 @@
+name: Build and Deploy
+on: # 监听 main 分支上的 push 事件
+  push:
+    branches:
+      - main
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest # 构建环境使用 ubuntu
+    steps:
+      - name: Checkout # 将代码拉到虚拟机
+        uses: actions/checkout@v2.3.1
+        with:
+          persist-credentials: false
+
+      - name: Install and Build # 下载依赖 打包项目
+        run: |
+          npm i -g pnpm
+          pnpm install
+          pnpm run build
+      - name: Deploy to remote 🚀 # 部署到服务器
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USERNAME }}
+          password: ${{ secrets.REMOTE_PASSWORD }}
+          port: 22
+          source: 'dist/'
+          target: ${{ secrets.REMOTE_TARGET }}

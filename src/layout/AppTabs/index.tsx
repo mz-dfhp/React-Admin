@@ -37,7 +37,7 @@ const AppTabs: React.FC = () => {
     setItems(newPanes)
   }
 
-  const onEdit = (targetKey: string, action: 'add' | 'remove') => {
+  const onEdit: any = (targetKey: string, action: 'add' | 'remove') => {
     if (action === 'add') {
       add()
     } else {
