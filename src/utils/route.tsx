@@ -38,7 +38,6 @@ export function formatRouteToMenu(list: IRoute[], baseUrl = '/'): IMenu[] {
   return list.reduce((pre, cur) => {
     cur.path = baseUrl + cur.path
     if (cur.children && cur.children.length > 0) {
-      console.log(cur.path)
       ;(cur.children as IMenu[]) = formatRouteToMenu(
         cur.children,
         cur.path + '/'

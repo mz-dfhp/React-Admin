@@ -3,8 +3,10 @@ import React, { useState, useMemo, useCallback, memo } from 'react'
 import { Layout } from 'antd'
 import AppMenu from './AppMenu'
 import AppHeader from './AppHeader'
-import AppContent from './AppMain'
+import AppMain from './AppMain'
 import AppTabs from './AppTabs'
+import AppSetting from './AppSetting'
+
 const { Sider, Header, Content } = Layout
 const AppLayout: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false)
@@ -28,10 +30,11 @@ const AppLayout: React.FC = () => {
           />
         </Header>
         <AppTabs />
-        <Content className="overflow-y-auto">
-          <AppContent />
+        <Content className="overflow-y-auto p-20px">
+          <AppMain />
         </Content>
       </Layout>
+      <AppSetting />
     </Layout>
   )
 }

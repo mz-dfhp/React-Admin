@@ -10,7 +10,6 @@ const AppMenu: React.FC<{ collapsed: boolean }> = ({ collapsed }) => {
   const menuList = useAppSelector(
     (state) => state.menuStore.menuList
   ) as ItemType[]
-  console.log('我创建了')
   const [activeKeys, setActiveKeys] = useState<string[]>([])
   const [openKeys, setOpenKeys] = useState<string[]>([])
   const location = useLocation()
@@ -24,12 +23,8 @@ const AppMenu: React.FC<{ collapsed: boolean }> = ({ collapsed }) => {
         return pre
       }
     }, [] as string[])
-    console.log(openKeys)
     setOpenKeys(openKeys)
     setActiveKeys([location.pathname])
-    return () => {
-      console.log('我销毁了')
-    }
   }, [location.pathname])
   const changeMenu = ({ key }: { key: string }) => {
     navigate(key)

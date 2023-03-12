@@ -4,6 +4,8 @@ specifiers:
   '@ant-design/icons': ^4.8.0
   '@commitlint/cli': ^17.2.0
   '@commitlint/config-conventional': ^17.2.0
+  '@iconify-json/ic': ^1.1.13
+  '@iconify-json/zondicons': ^1.1.4
   '@redux-devtools/extension': ^3.2.3
   '@types/lodash-es': ^4.17.6
   '@types/node': ^18.11.10
@@ -51,6 +53,8 @@ dependencies:
 devDependencies:
   '@commitlint/cli': 17.2.0
   '@commitlint/config-conventional': 17.2.0
+  '@iconify-json/ic': 1.1.13
+  '@iconify-json/zondicons': 1.1.4
   '@types/lodash-es': 4.17.6
   '@types/node': 18.11.10
   '@types/react': 18.0.25
@@ -648,6 +652,18 @@ packages:
 
   /@humanwhocodes/object-schema/1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
+    dev: true
+
+  /@iconify-json/ic/1.1.13:
+    resolution: {integrity: sha512-5i5zal/VRwTrs99iMTnG1Zu97bgX9Mkiu9TzR1U1rHBylUnBW+HkOweoQVEPgQITGG024/lNbZxU+3Aa2xuDww==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
+  /@iconify-json/zondicons/1.1.4:
+    resolution: {integrity: sha512-fIuY0p7/yEGFtzTURlqWKw9FvJFUP/NZ0pYYfWZapv8aXGsqfNLr0tGDxW6GqRXd+cfpNZYXsNkBioWQRppONg==}
+    dependencies:
+      '@iconify/types': 2.0.0
     dev: true
 
   /@iconify/types/2.0.0:

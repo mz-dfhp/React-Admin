@@ -7,7 +7,6 @@ export default function Index() {
   const store = useAppSelector((state) => state.countStore)
   const dispatch = useAppDispatch()
   const changeCount = (flag: boolean) => {
-    console.log(params)
     if (flag) {
       dispatch(increment())
     } else {
