@@ -11,7 +11,12 @@
     "lint:eslint": "eslint --fix ./src/**/*.{js,jsx,ts,tsx,vue} --cache --cache-location node_modules/.cache/eslint/",
     "lint:prettier": "prettier --write ./src/**/*.{js,ts,json,tsx,css,less,scss,vue,html,md} --loglevel warn --cache",
     "lint:lint-staged": "lint-staged",
-    "prepare": "husky install"
+    "preinstall": "npx only-allow pnpm",
+    "postinstall": "simple-git-hooks"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged",
+    "commit-msg": "npx --no-install commitlint -e"
   },
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
@@ -43,9 +48,9 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.10",
-    "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
+    "simple-git-hooks": "^2.8.1",
     "typescript": "^4.6.4",
     "unocss": "^0.47.4",
     "vite": "^3.2.0",

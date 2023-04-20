@@ -1,8 +1,23 @@
-# top-most EditorConfig file
+#控制 .editorconfig 是否生效
 root = true
-# Unix-style newlines with a newline ending every file
+
+#匹配的文件类型
 [*]
-# lf, cr, or crlf
+#缩进风格：空格
+charset = utf-8
+#换行符lf
 end_of_line = lf
-# ensure file ends with a newline when saving
+# 这里一般默认是 2，改成4就能缩进4个空格了
+indent_size = 2
+#缩进风格：空格
+indent_style = space
+#是否在文件的最后插入一个空行
 insert_final_newline = true
+#是否删除行尾的空格
+trim_trailing_whitespace = true
+
+[*.md]
+#是否在文件的最后插入一个空行
+insert_final_newline = false
+#是否删除行尾的空格
+trim_trailing_whitespace = false
