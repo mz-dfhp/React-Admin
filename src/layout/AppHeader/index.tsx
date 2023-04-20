@@ -7,11 +7,10 @@ const AppHeader: React.FC<{
   return (
     <div className="flex items-center h-100%">
       <div
-        className={
-          collapsed
-            ? 'i-zondicons-align-left'
-            : 'i-zondicons-align-right' + ' cursor-pointer'
-        }
+        className={`${
+          (collapsed ? 'i-bi:text-indent-left' : 'i-bi:text-indent-right') +
+          ' cursor-pointer text-18px'
+        }`}
         onClick={() => setCollapsed(!collapsed)}
       ></div>
     </div>

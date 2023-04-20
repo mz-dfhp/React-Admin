@@ -1,4 +1,11 @@
-import { presetUno, presetAttributify, presetIcons, defineConfig } from 'unocss'
+import {
+  presetUno,
+  presetAttributify,
+  presetIcons,
+  defineConfig,
+  transformerAttributifyJsx
+} from 'unocss'
+
 export default defineConfig({
   presets: [presetUno(), presetAttributify(), presetIcons()],
   rules: [],
@@ -10,5 +17,8 @@ export default defineConfig({
   ],
   theme: {
     main: '#f5f5f5'
-  }
+  },
+  transformers: [
+    transformerAttributifyJsx() // <--
+  ]
 })

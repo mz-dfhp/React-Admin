@@ -45,7 +45,7 @@ const AppMenu: React.FC<{ collapsed: boolean }> = ({ collapsed }) => {
           className="logo animate-spin animate-duration-3s m-r-10px"
           alt="React logo"
         />
-        {!collapsed && <div>木子</div>}
+        {!collapsed && <div>mz-react-admin</div>}
       </div>
       <Menu
         mode="inline"

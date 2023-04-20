@@ -41,7 +41,9 @@ const Login: React.FC = () => {
             onFinishFailed={onFinishFailed}
           >
             <Form.Item>
-              <div className="text-8 font-bold p-b-10 text-#5B86E5">木子</div>
+              <div className="text-8 font-bold p-b-10 text-#5B86E5">
+                mz-react-admin
+              </div>
             </Form.Item>
             <Form.Item
               label=""

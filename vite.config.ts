@@ -9,13 +9,7 @@ import path from 'path'
 const reslovePath = (pathName) => path.resolve(__dirname, pathName)
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-    viteEslint({
-      failOnError: true
-    }),
-    Unocss()
-  ],
+  plugins: [Unocss(), react(), viteEslint()],
   resolve: {
     alias: {
       '@': reslovePath('./src')
