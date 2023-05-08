@@ -1,6 +1,5 @@
 import { Outlet } from 'react-router-dom'
 import { IRoute } from '../index'
-import { AppstoreOutlined } from '@ant-design/icons'
 
 const routeName = 'Demo'
 const route: IRoute = {
@@ -10,7 +9,7 @@ const route: IRoute = {
   meta: {
     title: 'Demo',
     sort: 1,
-    icon: <AppstoreOutlined />
+    icon: <div className="i-bi:stickies-fill" />
   },
   children: [
     {

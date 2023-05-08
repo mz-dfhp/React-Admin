@@ -1,7 +1,6 @@
 import { lazy } from 'react'
 import { Outlet } from 'react-router-dom'
 import { IRoute } from '../index'
-import { AppstoreOutlined } from '@ant-design/icons'
 
 const ComponentOne = lazy(() => import('@/views/component/componentOne'))
 const ComponentTwo = lazy(() => import('@/views/component/componentTwo'))
@@ -14,7 +13,7 @@ const route: IRoute = {
   meta: {
     title: 'Component',
     sort: 2,
-    icon: <AppstoreOutlined />
+    icon: <div className="i-bi:yelp" />
   },
   children: [
     {

@@ -1,6 +1,7 @@
 import { IPermissionList } from '@/interface/user'
 import { IRoute } from '@/router'
 import { IMenu } from '@/store/menu/reducer'
+import RandomIcons from '@/components/RandomIcons'
 
 /**
  *
@@ -52,14 +53,14 @@ function getRouteToMenu(item: IRoute): IMenu {
     return {
       key: item?.path,
       label: item.meta?.title,
-      icon: item.meta?.icon || <></>,
+      icon: item.meta?.icon || <RandomIcons />,
       children: item.children
     }
   } else {
     return {
       key: item?.path,
       label: item.meta?.title,
-      icon: item.meta?.icon || <></>
+      icon: item.meta?.icon || <RandomIcons />
     }
   }
 }

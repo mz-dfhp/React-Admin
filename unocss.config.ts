@@ -18,7 +18,5 @@ export default defineConfig({
   theme: {
     main: '#f5f5f5'
   },
-  transformers: [
-    transformerAttributifyJsx() // <--
-  ]
+  transformers: [transformerAttributifyJsx()]
 })

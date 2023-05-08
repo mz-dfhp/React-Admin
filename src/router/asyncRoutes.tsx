@@ -9,11 +9,14 @@ const modules = import.meta.glob('./modules/*.router.tsx', {
   import: 'default',
   eager: true
 })
+
 const modulesRoutes: IRoute[] = []
+
 Object.keys(modules).forEach((item) => {
   modulesRoutes.push(modules[item] as IRoute)
 })
 
+// 异步路由
 export const asyncRoutes: IRoute[] = [
   {
     path: '/',
@@ -24,6 +27,7 @@ export const asyncRoutes: IRoute[] = [
   }
 ]
 
+// 错误路由
 export const errorRoutes: IRoute[] = [
   {
     path: '*',

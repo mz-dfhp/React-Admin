@@ -31,6 +31,20 @@ const routeList = [
         name: 'Demo-two'
       }
     ]
+  },
+  {
+    path: 'keep',
+    name: 'Keep',
+    children: [
+      {
+        path: 'keep-one',
+        name: 'Keep-one'
+      },
+      {
+        path: 'keep-two',
+        name: 'Keep-two'
+      }
+    ]
   }
 ]
 
@@ -53,8 +67,8 @@ export const getUserInfo = (role: string) => {
         name: role,
         avatar:
           role === 'admin'
-            ? 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
-            : 'https://fuss10.elemecdn.com/3/28/bbf893f792f03a54408b3b7a7ebf0jpeg.jpeg',
+            ? 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
+            : 'https://gw.alipayobjects.com/zos/antfincdn/x43I27A55%26/photo-1438109491414-7198515b166b.webp',
         permission: routeList.filter((item) => !filterPath.includes(item.path))
       })
     })

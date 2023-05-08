@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useAppSelector, useAppDispatch } from '@/hooks/redux'
 import { Button, Card } from 'antd'
 import { increment, decrement } from '@/store/count/actions'
@@ -14,30 +14,15 @@ export default function Index() {
     }
   }
   const navigate = useNavigate()
-  const params = useParams()
   const goToPage = (path: string) => {
     navigate(path)
   }
+  const loginOut = () => {
+    window.localStorage.clear()
+    window.location.reload()
+  }
   return (
     <div>
-      <Card>
-        <Button type="primary">{store.count}</Button>
-      </Card>
-      <Card>
-        <Button type="primary">{store.count}</Button>
-      </Card>
-      <Card>
-        <Button type="primary">{store.count}</Button>
-      </Card>
-      <Card>
-        <Button type="primary">{store.count}</Button>
-      </Card>
-      <Card>
-        <Button type="primary">{store.count}</Button>
-      </Card>
-      <Card>
-        <Button type="primary">{store.count}</Button>
-      </Card>
       <Card>
         <Button type="primary">{store.count}</Button>
       </Card>
@@ -45,6 +30,11 @@ export default function Index() {
       <br />
       <Button type="primary" onClick={() => goToPage('/login')}>
         login
+      </Button>
+      <br />
+      <br />
+      <Button type="primary" onClick={() => loginOut()}>
+        loginOut
       </Button>
       <br />
       <br />

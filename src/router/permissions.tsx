@@ -6,6 +6,7 @@ import { setUserInfo } from '@/store/user/actions'
 import { basicsRoutes, errorRoutes, asyncRoutes, IRoute } from './index'
 import { diffRouterList, formatRouteToMenu } from '@/utils/route'
 import { setMenu } from '@/store/menu/actions'
+
 const Permissions: React.FC = () => {
   const [addRoutes, setAddRoutes] = useState([...basicsRoutes])
 
@@ -19,7 +20,7 @@ const Permissions: React.FC = () => {
 
   useEffect(() => {
     const token = userStore.token
-    if (location.pathname === '/') navigate('/index')
+    if (location.pathname === '/') return navigate('/index')
     if (token) {
       if (location.pathname === '/login') {
         navigate('/', { replace: true })

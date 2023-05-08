@@ -1,6 +1,5 @@
 import { lazy } from 'react'
 import { IRoute } from '../index'
-import { AppstoreOutlined } from '@ant-design/icons'
 
 const Index = lazy(() => import('@/views/index'))
 
@@ -12,7 +11,7 @@ const route: IRoute = {
   meta: {
     title: '工作台',
     sort: 0,
-    icon: <AppstoreOutlined />
+    icon: <div className="i-bi:grid-fill" />
   }
 }
 export default route

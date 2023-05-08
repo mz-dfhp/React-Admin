@@ -14,6 +14,7 @@ const AppMenu: React.FC<{ collapsed: boolean }> = ({ collapsed }) => {
   const [openKeys, setOpenKeys] = useState<string[]>([])
   const location = useLocation()
   const navigate = useNavigate()
+
   useEffect(() => {
     const openKeys = location.pathname.split('/').reduce((pre, cur) => {
       if (cur && cur.indexOf('?') === -1) {
@@ -26,9 +27,11 @@ const AppMenu: React.FC<{ collapsed: boolean }> = ({ collapsed }) => {
     setOpenKeys(openKeys)
     setActiveKeys([location.pathname])
   }, [location.pathname])
-  const changeMenu = ({ key }: { key: string }) => {
+
+  const onChangeMenu = ({ key }: { key: string }) => {
     navigate(key)
   }
+
   const onOpenChange: MenuProps['onOpenChange'] = (keys) => {
     const latestOpenKey = keys.find((key) => !openKeys.includes(key))
     if (!menuList.map((item) => item?.key).includes(latestOpenKey as string)) {
@@ -37,6 +40,7 @@ const AppMenu: React.FC<{ collapsed: boolean }> = ({ collapsed }) => {
       setOpenKeys(latestOpenKey ? [latestOpenKey] : [])
     }
   }
+
   return (
     <div className="h-100vh">
       <div className="logo h-64px w-100% text-white  flex-center">
@@ -53,7 +57,7 @@ const AppMenu: React.FC<{ collapsed: boolean }> = ({ collapsed }) => {
         openKeys={openKeys}
         onOpenChange={onOpenChange}
         selectedKeys={activeKeys}
-        onClick={(e) => changeMenu(e)}
+        onClick={(e) => onChangeMenu(e)}
         items={menuList}
       />
     </div>

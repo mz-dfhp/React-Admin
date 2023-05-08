@@ -65,7 +65,13 @@ const Login: React.FC = () => {
               <Input.Password />
             </Form.Item>
             <Form.Item>
-              <Button type="primary" htmlType="submit" block loading={loading}>
+              <Button
+                type="primary"
+                htmlType="submit"
+                block
+                loading={loading}
+                className="w-100%"
+              >
                 login
               </Button>
             </Form.Item>
