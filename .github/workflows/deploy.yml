@@ -16,7 +16,6 @@ jobs:
         run: |
           npm i -g pnpm
           pnpm install --no-frozen-lockfile
-          setx NODE_OPTIONS --max_old_space_size=10240
           pnpm run build
       - name: Deploy to remote 🚀 # 部署到服务器
         uses: appleboy/scp-action@master
