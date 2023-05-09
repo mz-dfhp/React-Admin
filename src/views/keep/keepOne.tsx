@@ -1,7 +1,7 @@
 import { memo } from 'react'
 
 const KeepOne = () => {
-  return <div>componentOne</div>
+  return <div>缓存组件一</div>
 }
 
 export default memo(KeepOne)

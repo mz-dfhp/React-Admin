@@ -1,7 +1,6 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@ant-design/icons': ^4.8.0
   '@commitlint/cli': ^17.2.0
   '@commitlint/config-conventional': ^17.2.0
   '@iconify-json/bi': ^1.1.16
@@ -37,7 +36,6 @@ specifiers:
   vite-plugin-eslint: ^1.8.1
 
 dependencies:
-  '@ant-design/icons': 4.8.0_biqbaboplfbrettd7655fr4n2y
   '@redux-devtools/extension': 3.2.3_redux@4.2.0
   antd: 5.0.3_biqbaboplfbrettd7655fr4n2y
   dayjs: registry.npmmirror.com/dayjs/1.11.7

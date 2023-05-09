@@ -1,9 +1,11 @@
 import { IAcitionType } from '../types'
 import { SETMENU } from './actionType'
+import { IRoute } from '@/router'
 
-export interface IMenu {
+export interface IMenu extends IRoute {
   key?: string
   label?: string
+  title?: string
   icon?: JSX.Element
   children?: IMenu[]
 }

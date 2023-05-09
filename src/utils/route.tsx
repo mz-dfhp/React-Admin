@@ -48,19 +48,24 @@ export function formatRouteToMenu(list: IRoute[], baseUrl = '/'): IMenu[] {
   }, [] as IMenu[])
 }
 
+/**
+ *
+ * @param item 路由
+ * @returns 菜单所需要的格式
+ */
 function getRouteToMenu(item: IRoute): IMenu {
-  if (item.children?.length) {
-    return {
-      key: item?.path,
-      label: item.meta?.title,
-      icon: item.meta?.icon || <RandomIcons />,
-      children: item.children
-    }
-  } else {
-    return {
-      key: item?.path,
-      label: item.meta?.title,
-      icon: item.meta?.icon || <RandomIcons />
-    }
+  const result = {
+    key: item?.path,
+    label: item.meta?.title,
+    title: item.meta?.title,
+    icon: item.meta?.icon || <RandomIcons />,
+    name: item.name,
+    path: item.path,
+    meta: item.meta,
+    children: item.children
   }
+  if (!item.children?.length) {
+    delete result.children
+  }
+  return result
 }

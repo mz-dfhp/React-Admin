@@ -19,7 +19,6 @@
     "commit-msg": "npx --no-install commitlint -e"
   },
   "dependencies": {
-    "@ant-design/icons": "^4.8.0",
     "@redux-devtools/extension": "^3.2.3",
     "antd": "^5.0.3",
     "dayjs": "^1.11.7",
