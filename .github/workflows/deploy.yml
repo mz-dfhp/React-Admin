@@ -15,7 +15,7 @@ jobs:
       - name: Install and Build # 下载依赖 打包项目
         run: |
           npm i -g pnpm
-          pnpm install
+          pnpm install --no-frozen-lockfile
           pnpm run build
       - name: Deploy to remote 🚀 # 部署到服务器
         uses: appleboy/scp-action@master
