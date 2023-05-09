@@ -15,6 +15,7 @@ const route: IRoute = {
     sort: 2,
     icon: <div className="i-bi:mastodon" />
   },
+  redirect: 'keep-one',
   children: [
     {
       path: 'keep-one',

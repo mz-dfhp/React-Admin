@@ -15,6 +15,7 @@ const route: IRoute = {
     sort: 2,
     icon: <div className="i-bi:yelp" />
   },
+  redirect: 'component-one',
   children: [
     {
       path: 'component-one',

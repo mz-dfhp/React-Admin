@@ -11,6 +11,7 @@ const route: IRoute = {
     sort: 1,
     icon: <div className="i-bi:stickies-fill" />
   },
+  redirect: 'demo-one',
   children: [
     {
       path: 'demo-one',
@@ -19,6 +20,7 @@ const route: IRoute = {
       meta: {
         title: 'demo-one'
       },
+      redirect: 'demo-one-son',
       children: [
         {
           path: 'demo-one-son',

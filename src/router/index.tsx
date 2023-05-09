@@ -11,6 +11,7 @@ export interface IRoute {
     hide?: boolean
     sort?: number
   }
+  redirect?: string
   children?: IRoute[]
 }
 

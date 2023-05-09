@@ -38,6 +38,9 @@ export function diffRouterList(
 export function formatRouteToMenu(list: IRoute[], baseUrl = '/'): IMenu[] {
   return list.reduce((pre, cur) => {
     cur.path = baseUrl + cur.path
+    if (cur.redirect) {
+      cur.redirect = `${cur.path}/${cur.redirect}`
+    }
     if (cur.children && cur.children.length > 0) {
       ;(cur.children as IMenu[]) = formatRouteToMenu(
         cur.children,
@@ -62,6 +65,7 @@ function getRouteToMenu(item: IRoute): IMenu {
     name: item.name,
     path: item.path,
     meta: item.meta,
+    redirect: item.redirect || '',
     children: item.children
   }
   if (!item.children?.length) {
