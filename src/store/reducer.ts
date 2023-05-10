@@ -5,6 +5,7 @@ import storage from 'redux-persist/lib/storage' // defaults to localStorage for 
 import countReducer from './count'
 import userReducer from './user'
 import menuReducer from './menu'
+import routerReducer from './router'
 
 const persistConfig = {
   key: 'redux_persist',
@@ -17,6 +18,7 @@ export default persistReducer(
   combineReducers({
     countStore: countReducer,
     userStore: userReducer,
-    menuStore: menuReducer
+    menuStore: menuReducer,
+    routerStore: routerReducer
   })
 )

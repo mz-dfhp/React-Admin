@@ -12,11 +12,11 @@ export interface IMenu extends IRoute {
 interface IMenuState {
   menuList: IMenu[]
 }
-export const countState: IMenuState = {
+export const menuState: IMenuState = {
   menuList: []
 }
 export default function menuReducer(
-  state = countState,
+  state = menuState,
   action: IAcitionType = {}
 ) {
   switch (action.type) {
