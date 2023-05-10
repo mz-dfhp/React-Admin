@@ -2,15 +2,19 @@ import React, { useState } from 'react'
 import { Button, Form, Input } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import { ILoginForm } from '@/interface/user'
-import { useAppDispatch } from '@/hooks/redux'
+import { useAppDispatch, useAppSelector } from '@/hooks/redux'
 import { setToken } from '@/store/user/actions'
 
 const Login: React.FC = () => {
+  const navigate = useNavigate()
+
   const dispath = useAppDispatch()
+  const { token } = useAppSelector((state) => state.userStore)
+
   const [form] = useState<ILoginForm>({ username: '', password: '' })
   const [loading, setLoading] = useState<boolean>(false)
   const [formRef] = Form.useForm()
-  const navigate = useNavigate()
+
   const setDefalut = (role: string) => {
     formRef.setFieldsValue({ username: role, password: role })
   }
@@ -23,11 +27,12 @@ const Login: React.FC = () => {
       replace: true
     })
   }
-
   const onFinishFailed = (errorInfo: unknown) => {
     console.log('Failed:', errorInfo)
   }
-  return (
+  return token ? (
+    <></>
+  ) : (
     <div className="bg-#5B86E5 w100% h100% flex-center">
       <div className="w80% h80% bg-#ABC1F2 flex rounded-10px overflow-hidden">
         <div className="lg-flex-1"></div>

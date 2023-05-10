@@ -1,12 +1,11 @@
 import { IAcitionType } from '../types'
 import { SETROUTES } from './actionType'
-import { IRoute } from '@/router'
-
+import { IRoute, basicsRoutes } from '@/router'
 interface IRouterState {
   routerList: IRoute[]
 }
 export const routerState: IRouterState = {
-  routerList: []
+  routerList: [...basicsRoutes]
 }
 export default function routerReducer(
   state = routerState,
@@ -14,7 +13,7 @@ export default function routerReducer(
 ) {
   switch (action.type) {
     case SETROUTES:
-      return { ...state, routerList: action.routerList }
+      return { ...state, routerList: action.routerList as IRoute[] }
     default:
       return state
   }

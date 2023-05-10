@@ -1,22 +1,22 @@
 import { useLocation, useNavigate, useRoutes } from 'react-router-dom'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { cloneDeep } from 'lodash-es'
 import { useAppSelector, useAppDispatch } from '@/hooks/redux'
 import { setUserInfo } from '@/store/user/actions'
 import { basicsRoutes, errorRoutes, asyncRoutes, IRoute } from './index'
 import { diffRouterList, formatRouteToMenu } from '@/utils/route'
 import { setMenu } from '@/store/menu/actions'
+import { setRoutes } from '@/store/router/actions'
 
 const Permissions: React.FC = () => {
-  const [addRoutes, setAddRoutes] = useState([...basicsRoutes])
-
   const location = useLocation()
   const navigate = useNavigate()
 
   const userStore = useAppSelector((state) => state.userStore)
+  const routerStore = useAppSelector((state) => state.routerStore)
   const dispath = useAppDispatch()
 
-  const element = useRoutes(addRoutes)
+  const element = useRoutes(routerStore.routerList)
 
   useEffect(() => {
     const token = userStore.token
@@ -42,8 +42,7 @@ const Permissions: React.FC = () => {
       const menuList = formatRouteToMenu(cloneDeep(resultRoutes))
       dispath(setMenu(menuList))
       asyncRoutes[0].children = resultRoutes
-      const result = [...basicsRoutes, ...asyncRoutes, ...errorRoutes]
-      setAddRoutes(result)
+      dispath(setRoutes([...basicsRoutes, ...asyncRoutes, ...errorRoutes]))
     }
   }, [userStore.userInfo.permission])
   return element
