@@ -25,7 +25,8 @@ module.exports = {
     'prettier/prettier': ['error', { endOfLine: 'auto' }],
     'arrow-body-style': 'off',
     'prefer-arrow-callback': 'off',
-    '@typescript-eslint/no-explicit-any': ['off']
+    '@typescript-eslint/no-explicit-any': ['off'],
+    '@typescript-eslint/no-non-null-assertion': 'off'
   },
   settings: {
     react: {
