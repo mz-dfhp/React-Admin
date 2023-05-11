@@ -1,15 +1,13 @@
 import { lazy } from 'react'
-import { Outlet } from 'react-router-dom'
 import { IRoute } from '../index'
+import Layout from '@/layout/index'
 
 const ComponentOne = lazy(() => import('@/views/component/componentOne'))
 const ComponentTwo = lazy(() => import('@/views/component/componentTwo'))
 
-const routeName = 'Component'
 const route: IRoute = {
-  path: 'component',
-  name: routeName,
-  element: <Outlet />,
+  path: '/component',
+  element: <Layout />,
   meta: {
     title: 'Component',
     sort: 2,
@@ -19,7 +17,6 @@ const route: IRoute = {
   children: [
     {
       path: 'component-one',
-      name: `${routeName}-one`,
       element: <ComponentOne />,
       meta: {
         title: 'component-one'
@@ -27,7 +24,6 @@ const route: IRoute = {
     },
     {
       path: 'component-two',
-      name: `${routeName}-two`,
       element: <ComponentTwo />,
       meta: {
         title: 'component-two'

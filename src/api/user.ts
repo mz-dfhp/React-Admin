@@ -1,47 +1,59 @@
 import { ILoginForm, IUserInfo } from '@/interface/user'
 const routeList = [
   {
-    path: 'index',
-    name: 'Index'
+    path: '/',
+    name: '首页',
+    children: [
+      {
+        path: '/index',
+        name: '工作台'
+      }
+    ]
   },
   {
-    path: 'component',
+    path: '/component',
     name: 'Component',
     children: [
       {
-        path: 'component-one',
+        path: '/component/component-one',
         name: 'Component-one'
       },
       {
-        path: 'component-two',
+        path: '/component/component-two',
         name: 'Component-two'
       }
     ]
   },
   {
-    path: 'demo',
+    path: '/demo',
     name: 'Demo',
     children: [
       {
-        path: 'demo-one',
-        name: 'Demo-one'
+        path: '/demo/demo-one',
+        name: 'Demo-one',
+        children: [
+          {
+            path: '/demo/demo-one/demo-one-son',
+            name: 'Demo-one-son'
+          }
+        ]
       },
       {
-        path: 'demo-two',
+        path: '/demo/demo-two',
         name: 'Demo-two'
       }
     ]
   },
   {
-    path: 'keep',
-    name: 'Keep',
+    path: '/keep',
+    name: 'Keep缓存',
     children: [
       {
-        path: 'keep-one',
+        path: '/keep/keep-one',
         name: 'Keep-one'
       },
       {
-        path: 'keep-two',
+        path: '/keep/keep-two',
         name: 'Keep-two'
       }
     ]
@@ -60,7 +72,7 @@ export const getUserInfo = (role: string) => {
   return new Promise<IUserInfo>((resolve) => {
     let filterPath: string[] = []
     if (role !== 'admin') {
-      filterPath = ['component']
+      filterPath = ['/component']
     }
     setTimeout(() => {
       resolve({

@@ -1,11 +1,10 @@
-import { Outlet } from 'react-router-dom'
 import { IRoute } from '../index'
+import { Outlet } from 'react-router-dom'
+import Layout from '@/layout/index'
 
-const routeName = 'Demo'
 const route: IRoute = {
-  path: 'demo',
-  name: routeName,
-  element: <Outlet />,
+  path: '/demo',
+  element: <Layout />,
   meta: {
     title: 'Demo',
     sort: 1,
@@ -15,7 +14,6 @@ const route: IRoute = {
   children: [
     {
       path: 'demo-one',
-      name: `${routeName}-one`,
       element: <Outlet />,
       meta: {
         title: 'demo-one'
@@ -24,7 +22,6 @@ const route: IRoute = {
       children: [
         {
           path: 'demo-one-son',
-          name: `${routeName}-one-son`,
           element: <div>demo-one-son</div>,
           meta: {
             title: 'demo-one-son'
@@ -34,7 +31,6 @@ const route: IRoute = {
     },
     {
       path: 'demo-two',
-      name: `${routeName}-two`,
       element: <div>demo-two</div>,
       meta: {
         title: 'demo-two'

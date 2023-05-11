@@ -1,17 +1,26 @@
 import { lazy } from 'react'
 import { IRoute } from '../index'
+import Layout from '@/layout/index'
 
 const Index = lazy(() => import('@/views/index'))
 
-const routeName = 'Index'
 const route: IRoute = {
-  path: 'index',
-  element: <Index />,
-  name: routeName,
+  path: '/',
+  element: <Layout />,
   meta: {
-    title: '工作台',
-    sort: 0,
-    icon: <div className="i-bi:grid-fill" />
-  }
+    title: '首页',
+    sort: 1,
+    icon: <div className="i-bi:stickies-fill" />
+  },
+  redirect: 'index',
+  children: [
+    {
+      path: 'index',
+      element: <Index />,
+      meta: {
+        title: '工作台'
+      }
+    }
+  ]
 }
 export default route

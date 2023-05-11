@@ -1,5 +1,5 @@
 import { IPermissionList } from '@/interface/user'
-import { IRoute } from '@/router'
+import { IRoute, TRouterObj } from '@/router'
 import { IMenu } from '@/store/menu/reducer'
 import RandomIcons from '@/components/RandomIcons'
 
@@ -19,7 +19,7 @@ export function diffRouterList(
       resultRoutes.push(item)
     }
     userRoutes.forEach((Item) => {
-      if (item.name === Item.name) {
+      if (item.path === Item.path) {
         if (item.children?.length && Item.children?.length) {
           item.children = diffRouterList(item.children, Item.children)
         }
@@ -32,44 +32,85 @@ export function diffRouterList(
 
 /**
  *
- * @param list 过滤后的路由
- * @returns 左侧菜单栏数据
+ * @description 处理路由
+ * @param routes 路由表
+ * @param baseUrl url
+ * @param breadcrumb breadcrumb
+ * @returns result
  */
-export function formatRouteToMenu(list: IRoute[], baseUrl = '/'): IMenu[] {
-  return list.reduce((pre, cur) => {
+export function transRoutes(
+  routes: IRoute[],
+  baseUrl = '',
+  breadcrumb: IRoute['breadcrumb'] | [] = []
+): IRoute[] {
+  return routes.reduce((pre, cur) => {
     cur.path = baseUrl + cur.path
+    cur.breadcrumb = [
+      ...breadcrumb,
+      { path: cur.path, title: cur.meta?.title, hide: cur.meta?.hide }
+    ]
     if (cur.redirect) {
       cur.redirect = `${cur.path}/${cur.redirect}`
     }
     if (cur.children && cur.children.length > 0) {
-      ;(cur.children as IMenu[]) = formatRouteToMenu(
+      cur.children = transRoutes(
         cur.children,
-        cur.path + '/'
+        (cur.path === '/' ? '' : cur.path) + '/',
+        cur.breadcrumb
       )
     }
-    return pre.concat(getRouteToMenu(cur))
-  }, [] as IMenu[])
+    return pre.concat(cur)
+  }, [] as IRoute[])
 }
 
 /**
  *
- * @param item 路由
- * @returns 菜单所需要的格式
+ * @description 平铺路由
+ * @param routes 路由
+ * @returns routerObj
  */
-function getRouteToMenu(item: IRoute): IMenu {
-  const result = {
-    key: item?.path,
-    label: item.meta?.title,
-    title: item.meta?.title,
-    icon: item.meta?.icon || <RandomIcons />,
-    name: item.name,
-    path: item.path,
-    meta: item.meta,
-    redirect: item.redirect || '',
-    children: item.children
+export function flatRoutes(routes: IRoute[]) {
+  const routerObj: TRouterObj = {}
+  flatFn(routes)
+  function flatFn(routes: IRoute[]) {
+    routes.forEach((item) => {
+      if (item.children && item.children.length > 0) {
+        flatFn(item.children)
+      }
+      delete item.children
+      routerObj[item.path] = { ...item }
+    })
   }
-  if (!item.children?.length) {
-    delete result.children
-  }
-  return result
+  return routerObj
+}
+
+/**
+ *
+ * @description 处理菜单
+ * @param routes 用户菜单
+ * @param index 树层级
+ * @returns result
+ */
+export function transMenu(routes: IPermissionList[], index = 0): IMenu[] {
+  const resultRoutes: IMenu[] = []
+  index++
+  routes.forEach((item) => {
+    if (item.children && item.children.length === 1 && index === 1) {
+      item = item.children[0]
+    }
+    if (item.children && item.children.length > 0) {
+      item.children = transMenu(item.children, index) as any
+    }
+    const result = {
+      key: item?.path,
+      label: item?.name,
+      icon: <div className="i-bi:yelp" /> || <RandomIcons />,
+      children: item.children
+    }
+    if (!result.children) {
+      delete result.children
+    }
+    resultRoutes.push(result)
+  })
+  return resultRoutes
 }

@@ -1,4 +1,4 @@
-import Permissions from '@/router/permissions'
+import RouterGuard from '@/router/routerGuard'
 import { ConfigProvider } from 'antd'
 import zhCN from 'antd/locale/zh_CN'
 
@@ -13,7 +13,7 @@ function App() {
         }
       }}
     >
-      <Permissions />
+      <RouterGuard />
     </ConfigProvider>
   )
 }

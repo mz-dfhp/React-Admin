@@ -1,8 +1,7 @@
 import { IAcitionType } from '../types'
 import { SETMENU } from './actionType'
-import { IRoute } from '@/router'
 
-export interface IMenu extends IRoute {
+export interface IMenu {
   key?: string
   label?: string
   title?: string

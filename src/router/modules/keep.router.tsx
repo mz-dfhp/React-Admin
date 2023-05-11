@@ -1,15 +1,13 @@
 import { lazy } from 'react'
-import { Outlet } from 'react-router-dom'
 import { IRoute } from '../index'
+import Layout from '@/layout/index'
 
 const KeepOne = lazy(() => import('@/views/keep/keepOne'))
 const KeepTwo = lazy(() => import('@/views/keep/keepTwo'))
 
-const routeName = 'Keep'
 const route: IRoute = {
-  path: 'keep',
-  name: routeName,
-  element: <Outlet />,
+  path: '/keep',
+  element: <Layout />,
   meta: {
     title: 'Keep缓存',
     sort: 2,
@@ -19,7 +17,6 @@ const route: IRoute = {
   children: [
     {
       path: 'keep-one',
-      name: `${routeName}-one`,
       element: <KeepOne />,
       meta: {
         title: 'keep-one'
@@ -27,7 +24,6 @@ const route: IRoute = {
     },
     {
       path: 'keep-two',
-      name: `${routeName}-two`,
       element: <KeepTwo />,
       meta: {
         title: 'keep-two'

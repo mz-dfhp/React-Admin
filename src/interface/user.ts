@@ -8,7 +8,7 @@ export interface IPermissionList {
   path: string
   title?: string
   sort?: number
-  icon?: string
+  icon?: any
   children?: Array<IPermissionList>
 }
 export interface IUserInfo {
