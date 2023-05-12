@@ -11,7 +11,7 @@ const AppMain: React.FC = () => {
           </div>
         }
       >
-        <div className="app-main bg-white p-20px min-h-100%">
+        <div className="app-main bg-white p-20px min-h-100% rounded-8px">
           <Outlet />
         </div>
       </Suspense>

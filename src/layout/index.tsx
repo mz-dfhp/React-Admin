@@ -1,4 +1,5 @@
-import React, { useState, useMemo, useCallback, memo } from 'react'
+import React, { useState, useMemo, useCallback, memo, useEffect } from 'react'
+import { throttle } from 'lodash-es'
 
 import { Layout } from 'antd'
 import AppMenu from './AppMenu'
@@ -8,6 +9,7 @@ import AppTabs from './AppTabs'
 import AppSetting from './AppSetting'
 
 const { Sider, Header, Content } = Layout
+
 const AppLayout: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false)
   const collapsedCallback = useCallback(
@@ -17,6 +19,19 @@ const AppLayout: React.FC = () => {
     [collapsed]
   )
   const collapsedMemo = useMemo(() => collapsed, [collapsed])
+
+  function handleSize() {
+    setCollapsed(window.innerWidth < 800)
+  }
+
+  useEffect(() => {
+    handleSize()
+    window.addEventListener('resize', throttle(handleSize, 500))
+    return () => {
+      console.log('销毁')
+      window.removeEventListener('resize', handleSize)
+    }
+  }, [])
   return (
     <Layout className="h-100vh">
       <Sider trigger={null} theme="dark" collapsible collapsed={collapsedMemo}>

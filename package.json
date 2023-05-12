@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@redux-devtools/extension": "^3.2.3",
-    "antd": "^5.0.3",
+    "antd": "^5.4.7",
     "dayjs": "^1.11.7",
     "lodash-es": "^4.17.21",
     "normalize.css": "^8.0.1",

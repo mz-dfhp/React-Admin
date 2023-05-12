@@ -2,6 +2,7 @@ import React, { memo } from 'react'
 import type { MenuProps } from 'antd'
 import { Dropdown, Avatar } from 'antd'
 import { useAppSelector } from '@/hooks/redux'
+import BreadcrumbNav from './components/BreadcrumbNav'
 
 const items: MenuProps['items'] = [
   {
@@ -26,7 +27,7 @@ const AppHeader: React.FC<{
     userInfo: { avatar }
   } = useAppSelector((state) => state.userStore)
   return (
-    <div className="flex items-center h-100%">
+    <div className="flex-between h-100%">
       <div
         className={`${
           (collapsed ? 'i-bi:text-indent-left' : 'i-bi:text-indent-right') +
@@ -34,9 +35,12 @@ const AppHeader: React.FC<{
         }`}
         onClick={() => setCollapsed(!collapsed)}
       />
-      <div className="m-l-a! p-x-30px flex">
-        <div className="i-bi-github  cursor-pointer m-l-15px hover-scale-120 transition-all" />
-        <div className="i-bi-arrow-repeat  cursor-pointer m-l-15px hover-scale-120 transition-all" />
+      <div className="flex-between flex-1 hidden md:flex">
+        <BreadcrumbNav />
+        <div className="m-l-a! p-x-30px flex">
+          <div className="i-bi-github  cursor-pointer m-l-15px hover-scale-120 transition-all" />
+          <div className="i-bi-arrow-repeat  cursor-pointer m-l-15px hover-scale-120 transition-all" />
+        </div>
       </div>
       <div>
         <Dropdown

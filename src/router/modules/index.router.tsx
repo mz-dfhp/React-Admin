@@ -12,7 +12,6 @@ const route: IRoute = {
     sort: 1,
     icon: <div className="i-bi:stickies-fill" />
   },
-  redirect: 'index',
   children: [
     {
       path: 'index',
