@@ -49,8 +49,10 @@ const RouterGuard: React.FC = () => {
     }
   }, [userStore.userInfo.permission])
 
-  const router = routerObj[location.pathname]
-  beforeEach(router, navigate)
+  setTimeout(() => {
+    beforeEach(routerObj[location.pathname], navigate)
+  })
+
   return element
 }
 
