@@ -1,6 +1,6 @@
 ## 介绍
 
-基于 Vite + React18 + TypeScript + Ant Design + React Router + Redux + Unocss 实现的后台管理系统系统
+基于 Vite + React18 + TypeScript + Ant Design + React Router + Redux + Unocss 实现的后台管理系统模板
 
 项目采用 Eslint + Prettier + Simple-git-hooks + Commitlint + Lint-staged 统一代码规范
 
