@@ -6,6 +6,7 @@ import countReducer from './count'
 import userReducer from './user'
 import menuReducer from './menu'
 import routerReducer from './router'
+import tabReducer from './tab'
 
 const persistConfig = {
   key: 'redux_persist',
@@ -19,6 +20,7 @@ export default persistReducer(
     countStore: countReducer,
     userStore: userReducer,
     menuStore: menuReducer,
-    routerStore: routerReducer
+    routerStore: routerReducer,
+    tabStore: tabReducer
   })
 )
