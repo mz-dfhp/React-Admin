@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "build:github": "tsc && vite build --base=/mz-vue3-admin/ --mode github-io",
+    "build:github": "tsc && vite build --base=/mz-react-admin/ --mode github-io",
     "preview": "vite preview",
     "lint": "npm run lint:eslint & npm run lint:prettier",
     "lint:eslint": "eslint --fix ./src/**/*.{js,jsx,ts,tsx,vue} --cache --cache-location node_modules/.cache/eslint/",
