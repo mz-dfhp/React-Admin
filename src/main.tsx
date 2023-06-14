@@ -1,6 +1,6 @@
 import { Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, HashRouter } from 'react-router-dom'
 
 import store, { persistor } from '@/store'
 import { PersistGate } from 'redux-persist/integration/react'
@@ -26,9 +26,15 @@ root.render(
           </div>
         }
       >
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        {import.meta.env.MODE === 'github-io' ? (
+          <HashRouter>
+            <App />
+          </HashRouter>
+        ) : (
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        )}
       </Suspense>
     </PersistGate>
   </Provider>
