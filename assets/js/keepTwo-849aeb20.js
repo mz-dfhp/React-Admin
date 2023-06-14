@@ -1,0 +1,1 @@
+import{r as e,j as r}from"./index-9143fb86.js";var o="/home/runner/work/mz-react-admin/mz-react-admin/src/views/keep/keepTwo.tsx";const m=()=>r("div",{children:"\u7F13\u5B58\u7EC4\u4EF6\u4E8C"},void 0,!1,{fileName:o,lineNumber:4,columnNumber:10},void 0),s=e.exports.memo(m);export{s as default};

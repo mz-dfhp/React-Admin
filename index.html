@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/mz-react-admin/favicon.svg" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>mz-react-admin</title>
+    <script type="module" crossorigin src="/mz-react-admin/assets/js/index-9143fb86.js"></script>
+    <link rel="stylesheet" href="/mz-react-admin/assets/css/index-685ff945.css">
+  </head>
+  <style>
+    :root {
+      --theme-color: #1677ff;
+    }
+
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .loading-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .ant-spin-dot {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 60px;
+      font-size: 20px;
+    }
+
+    .ant-spin-dot-spin {
+      transform: rotate(45deg);
+      animation: ant-rotate 1.2s infinite linear;
+    }
+
+    .ant-spin-dot i {
+      position: absolute;
+      display: block;
+      width: 27px;
+      height: 27px;
+      background-color: var(--theme-color);
+      border-radius: 100%;
+      opacity: 0.3;
+      transform: scale(0.75);
+      animation: ant-spin-move 1s infinite linear alternate;
+      transform-origin: 50% 50%;
+    }
+
+    .ant-spin-dot:nth-child(1) {
+      top: 0;
+      left: 0;
+    }
+
+    .ant-spin-dot :nth-child(2) {
+      top: 0;
+      right: 0;
+      animation-delay: 0.4s;
+    }
+
+    .ant-spin-dot :nth-child(3) {
+      right: 0;
+      bottom: 0;
+      animation-delay: 0.8s;
+    }
+
+    .ant-spin-dot :nth-child(4) {
+      bottom: 0;
+      left: 0;
+      animation-delay: 1.2s;
+    }
+
+    .ant-spin-text {
+      margin-top: 20px;
+      font-size: 22px;
+      color: #333;
+    }
+
+    @keyframes ant-spin-move {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes ant-rotate {
+      to {
+        transform: rotate(405deg);
+      }
+    }
+  </style>
+  <body>
+    <div id="root">
+      <div class="loading-container">
+        <span class="ant-spin-dot ant-spin-dot-spin">
+          <i></i><i></i><i></i><i></i>
+        </span>
+        <div class="ant-spin-text">mz-react-admin</div>
+      </div>
+    </div>
+    
+  </body>
+</html>
