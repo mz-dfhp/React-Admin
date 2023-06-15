@@ -1,1 +1,0 @@
-import{r as e,j as n}from"./index-9143fb86.js";var o="/home/runner/work/mz-react-admin/mz-react-admin/src/views/component/componentOne.tsx";const m=()=>n("div",{children:"\u7EC4\u4EF6\u4E00"},void 0,!1,{fileName:o,lineNumber:4,columnNumber:10},void 0),t=e.exports.memo(m);export{t as default};
