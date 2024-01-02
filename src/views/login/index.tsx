@@ -1,73 +1,88 @@
 import React, { useState } from 'react'
-import { Button, Form, Input } from 'antd'
+import { Button, Form, Input, message } from 'antd'
 import { useNavigate } from 'react-router-dom'
-import { ILoginForm } from '@/interface/user'
-import { useAppDispatch, useAppSelector } from '@/hooks/redux'
-import { setToken } from '@/store/user/actions'
+import { userStore } from '@/store/user'
+import LoginSvg from '@/assets/login-bg.svg'
 
 const Login: React.FC = () => {
+  const { setUserInfo, setToken } = userStore()
   const navigate = useNavigate()
-
-  const dispath = useAppDispatch()
-  const { token } = useAppSelector((state) => state.userStore)
-
-  const [form] = useState<ILoginForm>({ username: '', password: '' })
+  const [form] = useState({ username: '', password: '' })
   const [loading, setLoading] = useState<boolean>(false)
   const [formRef] = Form.useForm()
 
-  const setDefalut = (role: string) => {
-    formRef.setFieldsValue({ username: role, password: role })
-  }
-  const onFinish = async (values: ILoginForm) => {
-    if (!(values.username === 'admin' || values.username === 'test')) return
-    setLoading(true)
-    await dispath(setToken(values))
-    setLoading(false)
-    navigate('/', {
-      replace: true
-    })
+  async function onFinish(values: typeof form) {
+    try {
+      if (values.username !== 'admin' || values.password !== '123456')
+        return message.error('登录失败')
+      setLoading(true)
+      const { data: { token, userInfo } } = await Promise.resolve({
+        data: {
+          token: 'token',
+          userInfo: {
+            username: 'admin',
+            avatar: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+          },
+        },
+      })
+      setToken(token)
+      setUserInfo(userInfo)
+      message.success('登录成功')
+      navigate('/', {
+        replace: true,
+      })
+    }
+    catch (error) {
+      console.log(error)
+    }
+    finally {
+      setLoading(false)
+    }
   }
   const onFinishFailed = (errorInfo: unknown) => {
     console.log('Failed:', errorInfo)
   }
-  return token ? (
-    <></>
-  ) : (
-    <div className="bg-#5B86E5 w100% h100% flex-center">
-      <div className="w80% h80% bg-#ABC1F2 flex rounded-10px overflow-hidden">
-        <div className="lg-flex-1"></div>
-        <div className="bg-#ffffff flex-1 flex">
+  return (
+    <div
+      className="h100% w100% flex-center p-x-20px"
+      style={{ backgroundImage: 'linear-gradient(94deg, #232d3c, #162b5b, #20469c, #2863e3)' }}
+    >
+      <div className="h-554px w-100% flex overflow-hidden rounded-10px bg-#ffffff lg-w-960px">
+        <div className="w-0 flex-center overflow-hidden lg-flex-1 lg-overflow-visible">
+          <img width={382} height={382} src={LoginSvg} />
+        </div>
+        <div className="flex flex-1 bg-#ffffff">
           <Form
             form={formRef}
-            className="m-auto w80%"
-            name="basic"
+            size="large"
+            className="m-auto overflow-hidden rounded-8px bg-#ffffff p-30px"
+            layout="vertical"
             initialValues={form}
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
           >
             <Form.Item>
-              <div className="text-8 font-bold p-b-10 text-#5B86E5">
-                mz-react-admin
+              <div className="p-b-20px text-center text-22px text-#5B86E5 font-bold">
+                React-admin
               </div>
             </Form.Item>
             <Form.Item
               label=""
               name="username"
               rules={[
-                { required: true, message: 'Please input your username!' }
+                { required: true, message: '请输入用户名' },
               ]}
             >
-              <Input />
+              <Input prefix={<div className="i-bi:person p-x-5px text-20px"></div>} maxLength={11} placeholder="admin" />
             </Form.Item>
-
             <Form.Item
               label=""
               name="password"
               rules={[
-                { required: true, message: 'Please input your password!' }
+                { required: true, message: '请输入密码' },
               ]}
             >
-              <Input.Password />
+              <Input type="password" prefix={<div className="i-bi:bag-dash p-x-5px text-20px"></div>} maxLength={6} placeholder="123456" />
             </Form.Item>
             <Form.Item>
               <Button
@@ -77,23 +92,7 @@ const Login: React.FC = () => {
                 loading={loading}
                 className="w-100%"
               >
-                login
-              </Button>
-            </Form.Item>
-            <Form.Item>
-              <Button
-                type="primary"
-                loading={loading}
-                onClick={() => setDefalut('admin')}
-              >
-                admin
-              </Button>
-              <Button
-                className="m-l-2"
-                loading={loading}
-                onClick={() => setDefalut('test')}
-              >
-                test
+                登录
               </Button>
             </Form.Item>
           </Form>

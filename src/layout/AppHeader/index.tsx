@@ -1,56 +1,38 @@
 import React, { memo } from 'react'
 import type { MenuProps } from 'antd'
-import { Dropdown, Avatar } from 'antd'
-import { useAppSelector } from '@/hooks/redux'
-import BreadcrumbNav from './components/BreadcrumbNav'
+import { Avatar, Dropdown } from 'antd'
+import { userStore } from '@/store/user'
 
-const items: MenuProps['items'] = [
-  {
-    key: '1',
-    label: '退出登陆'
-  },
-  {
-    key: '2',
-    label: '暂未添加更多'
+const AppHeader: React.FC<{ collapsed: boolean, setCollapsed: (e: boolean) => void }> = ({ collapsed, setCollapsed }) => {
+  const items: MenuProps['items'] = [
+    {
+      key: '1',
+      label: '退出登录',
+    },
+  ]
+
+  const { userInfo } = userStore()
+  function onDropdownClick({ key }: any) {
+    if (key === '1') {
+      window.localStorage.clear()
+      window.location.reload()
+    }
   }
-]
-
-const onDropdownClick: MenuProps['onClick'] = ({ key }) => {
-  if (key === '1') return window.localStorage.clear(), window.location.reload()
-}
-
-const AppHeader: React.FC<{
-  collapsed: boolean
-  setCollapsed: React.Dispatch<React.SetStateAction<boolean>>
-}> = ({ collapsed, setCollapsed }) => {
-  const {
-    userInfo: { avatar }
-  } = useAppSelector((state) => state.userStore)
   return (
-    <div className="flex-between h-100%">
+    <div className="h-100% flex-between">
       <div
-        className={`${
-          (collapsed ? 'i-bi:text-indent-left' : 'i-bi:text-indent-right') +
-          ' cursor-pointer text-18px'
-        }`}
+        className={`cursor-pointer  text-18px ${`${collapsed ? 'i-bi:text-indent-left' : 'i-bi:text-indent-right'}`}`}
         onClick={() => setCollapsed(!collapsed)}
       />
-      <div className="flex-between flex-1 hidden md:flex">
-        <BreadcrumbNav />
-        <div className="m-l-a! p-x-30px flex">
-          <div className="i-bi-github  cursor-pointer m-l-15px hover-scale-120 transition-all" />
-          <div className="i-bi-arrow-repeat  cursor-pointer m-l-15px hover-scale-120 transition-all" />
-        </div>
-      </div>
       <div>
         <Dropdown
           menu={{ items, onClick: onDropdownClick }}
-          placement="bottomLeft"
-          arrow
+          placement="bottom"
         >
-          <div className="h-50px flex-center">
-            <a onClick={(e) => e.preventDefault()}>
-              <Avatar size={40} src={avatar} />
+          <div className="h-40px flex-center cursor-pointer rounded-8px p-x-5px hover:bg-gray-100">
+            <span className="m-r-10px">{userInfo.username || '-'}</span>
+            <a onClick={e => e.preventDefault()}>
+              <Avatar size={30} src={userInfo.avatar} />
             </a>
           </div>
         </Dropdown>

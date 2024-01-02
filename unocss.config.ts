@@ -1,9 +1,9 @@
 import {
-  presetUno,
+  defineConfig,
   presetAttributify,
   presetIcons,
-  defineConfig,
-  transformerAttributifyJsx
+  presetUno,
+  transformerAttributifyJsx,
 } from 'unocss'
 
 export default defineConfig({
@@ -12,11 +12,11 @@ export default defineConfig({
   shortcuts: [
     {
       'flex-center': 'flex justify-center items-center',
-      'flex-between': 'flex justify-between items-center'
-    }
+      'flex-between': 'flex justify-between items-center',
+    },
   ],
   theme: {
-    main: '#f5f5f5'
+    main: '#5B86E5',
   },
-  transformers: [transformerAttributifyJsx()]
+  transformers: [transformerAttributifyJsx()],
 })

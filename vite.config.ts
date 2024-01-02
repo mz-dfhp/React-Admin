@@ -1,38 +1,40 @@
+import path from 'node:path'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import viteEslint from 'vite-plugin-eslint'
-//unocss
-import Unocss from 'unocss/vite'
-//path
-import path from 'path'
+import UnoCSS from 'unocss/vite'
 
-const reslovePath = (pathName) => path.resolve(__dirname, pathName)
+function reslovePath(pathName) {
+  return path.resolve(__dirname, pathName)
+}
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [Unocss(), react(), viteEslint()],
+  plugins: [
+    react(),
+    UnoCSS(),
+  ],
   resolve: {
     alias: {
-      '@': reslovePath('./src')
+      '@': reslovePath('./src'),
     },
-    extensions: ['.js', '.jsx', '.tsx', '.ts']
+    extensions: ['.js', '.ts', '.jsx', '.tsx', '.json', '.vue', '.mjs'],
   },
   server: {
     open: true,
-    port: 8081,
+    port: 5173,
     host: '0.0.0.0',
     cors: true,
     // 跨域代理配置
     proxy: {
-      '/api': {
-        target: 'https://www.baidu.com/',
+      '^/api/.*': {
+        target: 'https://win-admin-api-dev.binarydance.net',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '')
-      }
-    }
+        // rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
   },
   // * 打包去除 console.log && debugger
   esbuild: {
-    pure: ['console.log', 'debugger']
+    pure: ['console.log', 'debugger'],
   },
   build: {
     outDir: 'dist',
@@ -43,8 +45,8 @@ export default defineConfig({
         // Static resource classification and packaging
         chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: 'assets/js/[name]-[hash].js',
-        assetFileNames: 'assets/[ext]/[name]-[hash].[ext]'
-      }
-    }
-  }
+        assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
+      },
+    },
+  },
 })

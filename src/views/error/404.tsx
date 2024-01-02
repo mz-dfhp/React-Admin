@@ -1,19 +1,17 @@
 import { useNavigate } from 'react-router-dom'
-import { Button, theme } from 'antd'
-const { useToken } = theme
+import { Button } from 'antd'
 
 export default function Error404() {
-  const { token } = useToken()
   const navigate = useNavigate()
   const goToIndex = () => {
     navigate('/index')
   }
   return (
     <div
-      className="error-page flex-center flex-col w100vw h100vh"
-      style={{ backgroundColor: token.colorPrimary }}
+      className="error-page h100vh w100vw flex-center flex-col"
+      style={{ backgroundImage: 'linear-gradient(25deg, #094089, #7e536a, #bb6947, #f38100)' }}
     >
-      <div className="text-30 animate-bounce">404</div>
+      <div className="animate-bounce text-30">404</div>
       <Button
         onClick={() => {
           goToIndex()

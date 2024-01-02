@@ -1,14 +1,12 @@
 ## 介绍
 
-基于 Vite + React18 + TypeScript + Ant Design + React Router + Redux + Unocss 实现的后台管理系统模板
+基于 Vite + React18 + TypeScript + Ant Design + React Router + Zustand + Unocss 实现的后台管理系统模板
 
-项目采用 Eslint + Prettier + Simple-git-hooks + Commitlint + Lint-staged 统一代码规范
+项目采用 Eslint + Simple-git-hooks + Lint-staged 统一代码规范
 
 #### 预览
 
-<a href="http://120.78.132.170:8081" target="_blank">预览地址一</a>
-
-<a href="https://mz-dfhp.github.io/mz-react-admin/" target="_blank">预览地址二</a>
+<a href="https://mz-dfhp.github.io/mz-react-admin/" target="_blank">预览地址</a>
 
 #### 代码仓库
 
