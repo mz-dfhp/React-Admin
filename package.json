@@ -9,7 +9,7 @@
     "build:test": "tsc && vite build --mode test",
     "build:dev": "tsc && vite build --mode dev",
     "build:prod": "tsc && vite build --mode prod",
-    "build:github": "tsc && vite build --mode=github-io",
+    "build:github": "tsc && vite build --base=/mz-react18-admin/ --mode=github-io",
     "preview": "vite preview",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
