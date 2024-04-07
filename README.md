@@ -19,7 +19,7 @@
 git clone https://github.com/mz-dfhp/React-Admin.git
 
 # 进入项目
-cd mz-react-admin
+cd React-Admin
 
 # 安装依赖
 pnpm install
