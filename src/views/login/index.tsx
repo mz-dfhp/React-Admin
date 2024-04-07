@@ -63,7 +63,7 @@ const Login: React.FC = () => {
           >
             <Form.Item>
               <div className="p-b-20px text-center text-22px text-#5B86E5 font-bold">
-                React-admin
+                React-Admin
               </div>
             </Form.Item>
             <Form.Item
