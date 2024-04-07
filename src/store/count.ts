@@ -5,12 +5,12 @@ interface State {
   count: number
 }
 
-interface Actions {
+interface Action {
   increment: (value: number) => void
   decrement: (value: number) => void
 }
 
-const countStore = create(persist<State & Actions>(set => ({
+const countStore = create(persist<State & Action>(set => ({
   count: 1,
   increment: (value) => {
     set(state => ({ count: state.count + value }))

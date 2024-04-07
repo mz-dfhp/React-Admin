@@ -3,30 +3,10 @@ import type { MenuProps } from 'antd'
 import { Menu } from 'antd'
 import { useLocation, useNavigate } from 'react-router-dom'
 import Logo from '@/assets/react.svg'
-import type { IRoute } from '@/router'
-import { menuList } from '@/router'
-
-export interface IMenu {
-  key: string
-  label?: string
-  icon?: JSX.Element
-  children?: IMenu[]
-}
-function formatMenu(menuList: IRoute[]): IMenu[] {
-  const list: IMenu[] = []
-  menuList.forEach((item) => {
-    list.push({
-      key: item.path,
-      label: item.meta.title,
-      icon: item.meta.icon,
-      children: item.children?.length ? formatMenu(item.children) : undefined,
-    })
-  })
-  return list
-}
+import { routerStore } from '@/store/router'
 
 const AppMenu: React.FC<{ collapsed: boolean }> = ({ collapsed }) => {
-  const list: IMenu[] = formatMenu(menuList)
+  const { menuList } = routerStore()
   const [activeKeys, setActiveKeys] = useState<string[]>([])
   const [openKeys, setOpenKeys] = useState<string[]>([])
   const location = useLocation()
@@ -52,7 +32,7 @@ const AppMenu: React.FC<{ collapsed: boolean }> = ({ collapsed }) => {
 
   const onOpenChange: MenuProps['onOpenChange'] = (keys) => {
     const latestOpenKey = keys.find(key => !openKeys.includes(key))
-    if (!list.map(item => item?.key).includes(latestOpenKey as string))
+    if (!menuList.map(item => item?.key).includes(latestOpenKey as string))
       setOpenKeys(keys)
     else
       setOpenKeys(latestOpenKey ? [latestOpenKey] : [])
@@ -75,7 +55,7 @@ const AppMenu: React.FC<{ collapsed: boolean }> = ({ collapsed }) => {
         onOpenChange={onOpenChange}
         selectedKeys={activeKeys}
         onClick={e => onChangeMenu(e)}
-        items={list}
+        items={menuList}
       />
     </div>
   )

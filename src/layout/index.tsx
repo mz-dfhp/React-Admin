@@ -6,9 +6,13 @@ import AppMenu from './AppMenu'
 import AppHeader from './AppHeader'
 import AppMain from './AppMain'
 
+import AppTabs from './AppTabs'
+import { routerStore } from '@/store/router'
+
 const { Sider, Header, Content } = Layout
 
 function AppLayout() {
+  const { setMenuList } = routerStore()
   const [collapsed, setCollapsed] = useState(false)
   const collapsedMemo = useMemo(() => collapsed, [collapsed])
   function handleSize() {
@@ -16,6 +20,7 @@ function AppLayout() {
   }
 
   useEffect(() => {
+    setMenuList()
     handleSize()
     window.addEventListener('resize', throttle(handleSize, 500))
     return () => {
@@ -30,11 +35,9 @@ function AppLayout() {
       </Sider>
       <Layout>
         <Header className="!bg-white !px-20px">
-          <AppHeader
-            collapsed={collapsedMemo}
-            setCollapsed={setCollapsed}
-          />
+          <AppHeader collapsed={collapsedMemo} setCollapsed={setCollapsed} />
         </Header>
+        <AppTabs />
         <Content className="overflow-y-auto p-20px">
           <AppMain />
         </Content>

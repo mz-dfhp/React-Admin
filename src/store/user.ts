@@ -9,12 +9,12 @@ interface State {
   }
 }
 
-interface Actions {
+interface Action {
   setToken: (value: string) => void
   setUserInfo: (value: State['userInfo']) => void
 }
 
-const userStore = create(persist<State & Actions>(set => ({
+const userStore = create(persist<State & Action>(set => ({
   token: '',
   userInfo: {
     username: '',
