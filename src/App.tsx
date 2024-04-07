@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useLocation, useNavigate, useRoutes } from 'react-router-dom'
 
 import { ConfigProvider } from 'antd'
@@ -16,7 +16,10 @@ function App() {
   const navigate = useNavigate()
   const element = useRoutes(routerList)
   const { token } = userStore()
+  const [load, setLoad] = useState(false)
+
   useEffect(() => {
+    setLoad(false)
     if (token) {
       if (location.pathname === '/')
         navigate('/index', { replace: true })
@@ -26,6 +29,7 @@ function App() {
     else {
       navigate('/login', { replace: true })
     }
+    setLoad(true)
   }, [location.pathname, navigate, token])
   return (
     <ConfigProvider
@@ -36,7 +40,7 @@ function App() {
         },
       }}
     >
-      {element}
+      {load && element}
     </ConfigProvider>
   )
 }
