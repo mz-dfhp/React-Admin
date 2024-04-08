@@ -1,5 +1,77 @@
-.custom-tabs {
+.custom-app-tabs {
     .ant-tabs-nav {
         margin: 0 !important;
+
+        &::before {
+            display: none;
+        }
+
+        .ant-tabs-nav-list {
+            .ant-tabs-tab {
+                position: relative;
+                border-radius: 2px;
+                border: none;
+                margin-left: 0 !important;
+                box-sizing: border-box;
+                margin-right: 16px;
+                background: white;
+
+                &::after {
+                    position: absolute;
+                    content: "";
+                    top: 50%;
+                    left: -8px;
+                    width: 1px;
+                    height: 60%;
+                    background: #1677ff;
+                    border-radius: 1px;
+                    opacity: 1;
+                    transform: translateY(-50%) scaleX(.5);
+                }
+
+                .ant-tabs-tab-remove {
+                    display: none;
+
+                    svg {
+                        color: #1677ff;
+                    }
+                }
+
+                &::before {
+                    position: absolute;
+                    content: "";
+                    bottom: 0;
+                    left: 0;
+                    width: 0;
+                    height: 2px;
+                    background: #1677ff;
+                    transition: .3s;
+                }
+
+                &:hover {
+                    background: rgba($color: #1677ff, $alpha: 0.2);
+
+                    &::before {
+                        width: 100%;
+                    }
+
+                    .ant-tabs-tab-remove {
+                        display: block;
+                    }
+                }
+
+                &.ant-tabs-tab-active {
+                    background: rgba($color: #1677ff, $alpha: 0.2);
+
+                    &::before {
+                        width: 100%;
+                    }
+
+                    .ant-tabs-tab-remove {
+                        display: block;
+                    }
+                }
+            }
+        }
     }
 }

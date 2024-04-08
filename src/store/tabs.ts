@@ -1,20 +1,26 @@
 import { create } from 'zustand'
-import type { TRoute } from './router'
+import { createJSONStorage, persist } from 'zustand/middleware'
+
+interface Tabs {
+  key: string
+  label: string
+  closable: boolean
+}
 
 interface State {
-  tabsList: TRoute[]
+  tabsList: Tabs[]
 }
 
 interface Action {
-  addTabs: (value: TRoute) => void
+  addTabs: (value: Tabs) => void
   closeLeftTabs: (key: string) => void
   closeRightTabs: (key: string) => void
   closeCurrentTabs: (key: string) => void
   closeOtherTabs: (key: string) => void
-  closeAllTabs: (key: string) => void
+  closeAllTabs: () => void
 }
 
-const tabsStore = create<State & Action>(set => ({
+const tabsStore = create(persist<State & Action>(set => ({
   tabsList: [],
   addTabs: (value) => {
     set(state => ({ tabsList: state.tabsList.concat(value) }))
@@ -55,6 +61,9 @@ const tabsStore = create<State & Action>(set => ({
       return { tabsList: list }
     })
   },
+}), {
+  name: 'tabs-store',
+  storage: createJSONStorage(() => localStorage),
 }))
 
 export { tabsStore }
