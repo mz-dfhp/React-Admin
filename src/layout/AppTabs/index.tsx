@@ -47,7 +47,7 @@ const AppTabs: React.FC = () => {
         refresh()
         break
       case 2:
-        closeCurrentTabs(activeKey)
+        onEdit(activeKey)
         break
       case 3:
         closeOtherTabs(activeKey)
