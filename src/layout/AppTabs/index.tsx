@@ -9,12 +9,12 @@ import { AppLayoutContext } from '@/layout'
 import '@/layout/AppTabs/index.scss'
 
 const operateList = [
-  { id: 1, title: '刷新当前', icon: 'i-bi-arrow-repeat' },
-  { id: 2, title: '关闭当前', icon: 'i-bi:x-lg' },
-  { id: 3, title: '关闭其他', icon: 'i-bi:x-lg' },
-  { id: 4, title: '关闭左侧', icon: 'i-bi:arrow-left-circle' },
-  { id: 5, title: '关闭右侧', icon: 'i-bi:arrow-right-circle' },
-  { id: 6, title: '关闭全部', icon: 'i-bi:x-lg' },
+  { id: 1, title: '刷新当前', icon: 'icon-[bi--arrow-repeat]' },
+  { id: 2, title: '关闭当前', icon: 'icon-[bi--x-lg]' },
+  { id: 3, title: '关闭其他', icon: 'icon-[bi--x-lg]' },
+  { id: 4, title: '关闭左侧', icon: 'icon-[bi--arrow-left-circle]' },
+  { id: 5, title: '关闭右侧', icon: 'icon-[bi--arrow-right-circle]' },
+  { id: 6, title: '关闭全部', icon: 'icon-[bi--x-lg]' },
 ]
 const AppTabs: React.FC = () => {
   const location = useLocation()
@@ -96,7 +96,7 @@ const AppTabs: React.FC = () => {
         label: (
           <div className="flex items-center">
             <div>{ item.title}</div>
-            <div className={`${item.icon} m-l-5px`}></div>
+            <div className={`${item.icon} ml-[5px]`}></div>
           </div>
         ),
         disabled: operateDisabled(item.id),
@@ -115,7 +115,7 @@ const AppTabs: React.FC = () => {
 
   return (
     <div
-      className="flex items-center overflow-hidden p-x-5px"
+      className="flex items-center overflow-hidden px-[5px]"
     >
       <div className="flex-1 overflow-hidden">
         <Tabs
@@ -131,7 +131,7 @@ const AppTabs: React.FC = () => {
       </div>
       <Dropdown menu={{ items: dropdownList, onClick: onDropdownClick }} placement="bottomRight">
         <div
-          className="i-bi:grid-fill m-l-auto w-50px flex-shrink-0 cursor-pointer text-16px"
+          className="icon-[bi--grid-fill] ml-auto w-[50px] flex-shrink-0 cursor-pointer text-[16px]"
         >
         </div>
       </Dropdown>

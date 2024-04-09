@@ -46,23 +46,23 @@ function AppLayout() {
       {
         !refreshing
           ? (
-            <Layout className="h-100vh">
+            <Layout className="h-[100vh]">
               <Sider trigger={null} theme="dark" collapsible collapsed={collapsedMemo}>
                 <AppMenu collapsed={collapsedMemo} />
               </Sider>
               <Layout>
-                <Header className="h-auto bg-white p-x-0 leading-none">
+                <Header className="h-auto bg-white px-0 leading-none">
                   <AppHeader collapsed={collapsedMemo} setCollapsed={setCollapsed} />
                   <AppTabs />
                 </Header>
-                <Content className="overflow-y-auto p-20px">
+                <Content className="overflow-y-auto p-[20px]">
                   <AppMain />
                 </Content>
               </Layout>
             </Layout>
             )
           : (
-            <div className="h-100vh w-100vw flex-center overflow-hidden bg-transparent">
+            <div className="h-[100vh] w-[100vw] flex items-center justify-center overflow-hidden bg-transparent">
               <Spin size="large" />
             </div>
             )

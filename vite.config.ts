@@ -2,17 +2,13 @@ import path from 'node:path'
 import process from 'node:process'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import unocss from 'unocss/vite'
 
 function reslovePath(pathName) {
   return path.resolve(process.cwd(), pathName)
 }
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-    unocss(),
-  ],
+  plugins: [react()],
   resolve: {
     alias: {
       '@': reslovePath('./src'),

@@ -54,7 +54,7 @@ export default function Index() {
             return (
               <Col key={item.key} xs={24} sm={12} md={12} lg={6} xl={6}>
                 <Card title={item.title} bordered={false} hoverable style={item.style}>
-                  <div className="p-15px text-36px text-white font-bold">
+                  <div className="p-[15px] text-[36px] text-white font-bold">
                     <NumberCounter value={countInfo[item.key]} />
                   </div>
                 </Card>

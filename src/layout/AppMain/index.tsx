@@ -6,7 +6,7 @@ const AppMain: React.FC = () => {
   return (
     <Suspense
       fallback={(
-        <div className="h-100% w-100% flex-center">
+        <div className="h-full w-full flex items-center justify-center">
           <Spin size="large" />
         </div>
       )}

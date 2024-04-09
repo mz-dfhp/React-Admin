@@ -44,25 +44,25 @@ const Login: React.FC = () => {
   }
   return (
     <div
-      className="h100% w100% flex-center p-x-20px"
+      className="h-full w-full flex items-center justify-center px-[20px]"
       style={{ backgroundImage: 'linear-gradient(94deg, #232d3c, #162b5b, #20469c, #2863e3)' }}
     >
-      <div className="h-554px w-100% flex overflow-hidden rounded-10px bg-#ffffff lg-w-960px">
-        <div className="w-0 flex-center overflow-hidden lg-flex-1 lg-overflow-visible">
+      <div className="h-[554px] w-full flex overflow-hidden rounded-[10px] bg-white lg:w-[960px]">
+        <div className="w-0 flex items-center justify-center overflow-hidden lg:flex-1 lg:overflow-visible">
           <img width={382} height={382} src={LoginSvg} />
         </div>
-        <div className="flex flex-1 bg-#ffffff">
+        <div className="flex flex-1 bg-white">
           <Form
             form={formRef}
             size="large"
-            className="m-auto overflow-hidden rounded-8px bg-#ffffff p-30px"
+            className="m-auto overflow-hidden rounded-[8px] bg-white p-[30px]"
             layout="vertical"
             initialValues={form}
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
           >
             <Form.Item>
-              <div className="p-b-20px text-center text-22px text-#5B86E5 font-bold">
+              <div className="pb-[20px] text-center text-[22px] text-[#5B86E5] font-bold">
                 React-Admin
               </div>
             </Form.Item>
@@ -73,7 +73,14 @@ const Login: React.FC = () => {
                 { required: true, message: '请输入用户名' },
               ]}
             >
-              <Input prefix={<div className="i-bi:person p-x-5px text-20px"></div>} maxLength={11} placeholder="admin" />
+              <Input
+                prefix={(
+                  <div className="icon-[bi--person] px-[5px] text-[20px]">
+                  </div>
+                )}
+                maxLength={11}
+                placeholder="admin"
+              />
             </Form.Item>
             <Form.Item
               label=""
@@ -82,7 +89,12 @@ const Login: React.FC = () => {
                 { required: true, message: '请输入密码' },
               ]}
             >
-              <Input type="password" prefix={<div className="i-bi:bag-dash p-x-5px text-20px"></div>} maxLength={6} placeholder="123456" />
+              <Input
+                type="password"
+                prefix={<div className="icon-[bi--bag-dash] px-[5px] text-[20px]"></div>}
+                maxLength={6}
+                placeholder="123456"
+              />
             </Form.Item>
             <Form.Item>
               <Button
@@ -90,7 +102,7 @@ const Login: React.FC = () => {
                 htmlType="submit"
                 block
                 loading={loading}
-                className="w-100%"
+                className="w-full"
               >
                 登录
               </Button>

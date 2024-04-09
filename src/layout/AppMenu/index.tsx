@@ -39,11 +39,11 @@ const AppMenu: React.FC<{ collapsed: boolean }> = ({ collapsed }) => {
   }
 
   return (
-    <div className="h-100vh">
-      <div className="logo h-64px w-100% flex-center text-white">
+    <div className="h-[100vh]">
+      <div className="logo h-[64px] w-full flex items-center justify-center text-white">
         <img
           src={Logo}
-          className="logo m-x-10px h-32px w-32px animate-spin animate-duration-3s rounded-full"
+          className="logo mx-[10px] h-[32px] w-[32px] animate-spin-slow rounded-full"
           alt="React logo"
         />
         {!collapsed && <div className="overflow-hidden text-center">React-Admin</div>}

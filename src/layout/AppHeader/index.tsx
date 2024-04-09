@@ -20,27 +20,27 @@ const AppHeader: React.FC<{ collapsed: boolean, setCollapsed: (e: boolean) => vo
     }
   }
   return (
-    <div className="h-60px flex-between p-x-20px">
+    <div className="h-[60px] flex items-center justify-between px-[20px]">
       <div
-        className={`cursor-pointer  text-18px ${`${collapsed ? 'i-bi:text-indent-left' : 'i-bi:text-indent-right'}`}`}
+        className={`cursor-pointer  text-[18px] ${`${collapsed ? 'icon-[bi--text-indent-left]' : 'icon-[bi--text-indent-right]'}`}`}
         onClick={() => setCollapsed(!collapsed)}
       />
-      <div className="m-l-auto flex items-center justify-around p-x-25px">
+      <div className="ml-auto flex items-center justify-around px-[25px]">
         <div
-          className="i-bi-github m-l-15px cursor-pointer transition-all hover-scale-120"
+          className="icon-[bi--github] ml-[15px] cursor-pointer transition-all hover:scale-[1.2]"
           onClick={() => window.open('https://github.com/mz-dfhp/React-Admin')}
         >
         </div>
         <div
-          className={`${false ? 'i-bi:fullscreen-exit' : 'i-bi:arrows-angle-expand'}  m-l-20px  cursor-pointer hover-scale-120 transition-all`}
+          className={`${false ? 'icon-[bi--fullscreen-exit]' : 'icon-[bi--arrows-angle-expand]'}  ml-[20px]  cursor-pointer hover:scale-[1.2] transition-all`}
         >
         </div>
         <div
-          className={`${false ? 'i-bi:moon' : 'i-bi:sun'}  m-l-20px  cursor-pointer hover-scale-120 transition-all`}
+          className={`${false ? 'icon-[bi--moon]' : 'icon-[bi--sun]'}  ml-[20px]  cursor-pointer hover:scale-[1.2] transition-all`}
         >
         </div>
         <div
-          className="i-bi-arrow-repeat m-l-20px cursor-pointer text-16px transition-all hover-scale-120"
+          className="icon-[bi--arrow-repeat] ml-[20px] cursor-pointer text-[16px] transition-all hover:scale-[1.2]"
           onClick={refresh}
         >
         </div>
@@ -50,8 +50,8 @@ const AppHeader: React.FC<{ collapsed: boolean, setCollapsed: (e: boolean) => vo
           menu={{ items, onClick: onDropdownClick }}
           placement="bottom"
         >
-          <div className="h-40px flex-center cursor-pointer rounded-8px p-x-5px hover:bg-gray-100">
-            <span className="m-r-10px">{userInfo.username || '-'}</span>
+          <div className="h-[40px] flex items-center justify-center cursor-pointer rounded-[8px] px-[5px] hover:bg-gray-100">
+            <span className="mr-[10px]">{userInfo.username || '-'}</span>
             <a onClick={e => e.preventDefault()}>
               <Avatar size={30} src={userInfo.avatar} />
             </a>

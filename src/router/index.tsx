@@ -29,7 +29,7 @@ export const menuList: IRoute[] = [
     element: <Index />,
     meta: {
       title: '工作台',
-      icon: <div className="i-bi:grid-fill" />,
+      icon: <div className="icon-[bi--grid-fill]" />,
     },
   },
   {
@@ -37,7 +37,7 @@ export const menuList: IRoute[] = [
     element: <Count />,
     meta: {
       title: 'Count',
-      icon: <div className="i-bi:stickies-fill" />,
+      icon: <div className="icon-[bi--grid-fill]" />,
     },
   },
   {
@@ -45,15 +45,15 @@ export const menuList: IRoute[] = [
     element: <div><Outlet /></div>,
     meta: {
       title: '测试1',
-      icon: <div className="i-bi:stickies-fill" />,
+      icon: <div className="icon-[bi--grid-fill]" />,
     },
     children: [
       {
         path: '/test1/test1-1',
-        element: <div>test1</div>,
+        element: <div>测试1-1</div>,
         meta: {
           title: '测试1-1',
-          icon: <div className="i-bi:stickies-fill" />,
+          icon: <div className="icon-[bi--grid-fill]" />,
         },
       },
     ],
@@ -63,15 +63,23 @@ export const menuList: IRoute[] = [
     element: <div><Outlet /></div>,
     meta: {
       title: '测试2',
-      icon: <div className="i-bi:stickies-fill" />,
+      icon: <div className="icon-[bi--grid-fill]" />,
     },
     children: [
       {
-        path: '/test2/test2-2',
-        element: <div>test2-2</div>,
+        path: '/test2/test2-1',
+        element: <div>测试2-1</div>,
         meta: {
           title: '测试2-1',
-          icon: <div className="i-bi:stickies-fill" />,
+          icon: <div className="icon-[bi--grid-fill]" />,
+        },
+      },
+      {
+        path: '/test2/test2-2',
+        element: <div>测试2-2</div>,
+        meta: {
+          title: '测试2-2',
+          icon: <div className="icon-[bi--grid-fill]" />,
         },
       },
     ],
