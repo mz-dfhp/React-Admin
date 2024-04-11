@@ -12,11 +12,11 @@ export enum requestContentTypeEnum {
 export enum responseCodeEnum {
   'SUCCEE_CODE' = 0,
   'LOGIN_CODE' = -1,
-  'ERROR_CODE' = 500,
+  'ERROR_CODE' = -2,
 }
 
 export enum requestConfigEnum {
   'BASE_URL' = '/proxy',
-  'TIME_OUT' = 10000,
+  'TIME_OUT' = 20000,
   'TOKEN_NAME' = 'Authorization',
 }
