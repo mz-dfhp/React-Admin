@@ -14,7 +14,6 @@
                 margin-left: 0 !important;
                 box-sizing: border-box;
                 margin-right: 16px;
-                background: white;
 
                 &::after {
                     position: absolute;
@@ -23,7 +22,7 @@
                     left: -8px;
                     width: 1px;
                     height: 60%;
-                    background: #1677ff;
+                    background: var(--ant-color-primary);
                     border-radius: 1px;
                     opacity: 1;
                     transform: translateY(-50%) scaleX(.5);
@@ -33,7 +32,7 @@
                     display: none;
 
                     svg {
-                        color: #1677ff;
+                        color: var(--ant-color-primary);
                     }
                 }
 
@@ -44,12 +43,12 @@
                     left: 0;
                     width: 0;
                     height: 2px;
-                    background: #1677ff;
+                    background: var(--ant-color-primary);
                     transition: .3s;
                 }
 
                 &:hover {
-                    background: rgba($color: #1677ff, $alpha: 0.2);
+                    background: var(--ant-blue-2);
 
                     &::before {
                         width: 100%;
@@ -61,7 +60,7 @@
                 }
 
                 &.ant-tabs-tab-active {
-                    background: rgba($color: #1677ff, $alpha: 0.2);
+                    background: var(--ant-blue-2);
 
                     &::before {
                         width: 100%;

@@ -1,8 +1,11 @@
 import React, { memo, useContext } from 'react'
+import { useFullscreen } from 'ahooks'
+
 import type { MenuProps } from 'antd'
 import { Avatar, Dropdown } from 'antd'
 import { userStore } from '@/store/user'
 import { AppLayoutContext } from '@/layout'
+import { settingStore } from '@/store/setting'
 
 const items: MenuProps['items'] = [
   {
@@ -12,7 +15,10 @@ const items: MenuProps['items'] = [
 ]
 const AppHeader: React.FC<{ collapsed: boolean, setCollapsed: (e: boolean) => void }> = ({ collapsed, setCollapsed }) => {
   const { userInfo } = userStore()
+  const { isDark, toggleDark } = settingStore()
   const { refresh } = useContext(AppLayoutContext)
+  const [isFullscreen, { toggleFullscreen }] = useFullscreen(document.body)
+
   function onDropdownClick({ key }: any) {
     if (key === '1') {
       window.localStorage.clear()
@@ -32,11 +38,13 @@ const AppHeader: React.FC<{ collapsed: boolean, setCollapsed: (e: boolean) => vo
         >
         </div>
         <div
-          className={`${false ? 'icon-[bi--fullscreen-exit]' : 'icon-[bi--arrows-angle-expand]'}  ml-[20px]  cursor-pointer hover:scale-[1.2] transition-all`}
+          className={`${isFullscreen ? 'icon-[bi--fullscreen-exit]' : 'icon-[bi--arrows-angle-expand]'}  ml-[20px]  cursor-pointer hover:scale-[1.2] transition-all`}
+          onClick={toggleFullscreen}
         >
         </div>
         <div
-          className={`${false ? 'icon-[bi--moon]' : 'icon-[bi--sun]'}  ml-[20px]  cursor-pointer hover:scale-[1.2] transition-all`}
+          className={`${isDark ? 'icon-[bi--moon]' : 'icon-[bi--sun]'}  ml-[20px]  cursor-pointer hover:scale-[1.2] transition-all`}
+          onClick={toggleDark}
         >
         </div>
         <div

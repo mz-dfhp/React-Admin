@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { Button, Form, Input, message } from 'antd'
+import { Button, Form, Input, message, theme } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import { userStore } from '@/store/user'
 import LoginSvg from '@/assets/login-bg.svg'
 
 const Login: React.FC = () => {
+  const { token: { colorBgContainer } } = theme.useToken()
   const { setUserInfo, setToken } = userStore()
   const navigate = useNavigate()
   const [form] = useState({ username: '', password: '' })
@@ -47,15 +48,16 @@ const Login: React.FC = () => {
       className="h-full w-full flex items-center justify-center px-[20px]"
       style={{ backgroundImage: 'linear-gradient(94deg, #232d3c, #162b5b, #20469c, #2863e3)' }}
     >
-      <div className="h-[554px] w-full flex overflow-hidden rounded-[10px] bg-white lg:w-[960px]">
+      <div className="h-[554px] w-full flex overflow-hidden rounded-[10px] lg:w-[960px]" style={{ background: colorBgContainer }}>
         <div className="w-0 flex items-center justify-center overflow-hidden lg:flex-1 lg:overflow-visible">
           <img width={382} height={382} src={LoginSvg} />
         </div>
-        <div className="flex flex-1 bg-white">
+        <div className="flex flex-1" style={{ background: colorBgContainer }}>
           <Form
             form={formRef}
             size="large"
-            className="m-auto overflow-hidden rounded-[8px] bg-white p-[30px]"
+            className="m-auto overflow-hidden rounded-[8px] p-[30px]"
+            style={{ background: colorBgContainer }}
             layout="vertical"
             initialValues={form}
             onFinish={onFinish}

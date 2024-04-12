@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@redux-devtools/extension": "^3.3.0",
+    "ahooks": "^3.7.11",
     "antd": "^5.12.2",
     "axios": "^1.6.2",
     "dayjs": "^1.11.10",
