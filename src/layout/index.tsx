@@ -1,4 +1,4 @@
-import { createContext, useEffect, useMemo, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import { throttle } from 'lodash-es'
 import { Layout, Spin, theme } from 'antd'
 import { routerStore } from '@/store/router'
@@ -22,7 +22,7 @@ function AppLayout() {
   const [refreshing, setRefreshing] = useState(false)
   const { setMenuList } = routerStore()
   const [collapsed, setCollapsed] = useState(false)
-  const collapsedMemo = useMemo(() => collapsed, [collapsed])
+
   function handleSize() {
     setCollapsed(window.innerWidth < 800)
   }
@@ -48,12 +48,12 @@ function AppLayout() {
         !refreshing
           ? (
             <Layout className="h-[100vh]">
-              <Sider trigger={null} theme="light" collapsible collapsed={collapsedMemo}>
-                <AppMenu collapsed={collapsedMemo} />
+              <Sider trigger={null} theme="light" collapsible collapsed={collapsed}>
+                <AppMenu collapsed={collapsed} />
               </Sider>
               <Layout>
                 <Header className="h-auto px-0 leading-none" style={{ background: colorBgContainer }}>
-                  <AppHeader collapsed={collapsedMemo} setCollapsed={setCollapsed} />
+                  <AppHeader collapsed={collapsed} setCollapsed={setCollapsed} />
                   <AppTabs />
                 </Header>
                 <Content className="overflow-y-auto p-[20px]">
