@@ -40,13 +40,13 @@ const AppMenu: React.FC<{ collapsed: boolean }> = ({ collapsed }) => {
 
   return (
     <div className="h-[100vh]">
-      <div className="logo h-[64px] w-full flex items-center justify-center text-white">
+      <div className="logo h-[64px] w-full flex items-center justify-center">
         <img
           src={Logo}
           className="logo mx-[10px] h-[32px] w-[32px] animate-spin-slow rounded-full"
           alt="React logo"
         />
-        {!collapsed && <span className="overflow-hidden text-center text-black/80 dark:text-white">React-Admin</span>}
+        {!collapsed && <span className="overflow-hidden text-center">React-Admin</span>}
       </div>
       <Menu
         mode="inline"
