@@ -8,10 +8,10 @@ export default function Error404() {
   }
   return (
     <div
-      className="error-page h100vh w100vw flex-center flex-col"
+      className="error-page h-full w-full flex justify-center items-center flex-col"
       style={{ backgroundImage: 'linear-gradient(25deg, #094089, #7e536a, #bb6947, #f38100)' }}
     >
-      <div className="animate-bounce text-30">404</div>
+      <div className="animate-bounce text-[30px]">404</div>
       <Button
         onClick={() => {
           goToIndex()

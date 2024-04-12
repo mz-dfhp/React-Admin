@@ -8,10 +8,10 @@ export default function Error403() {
   }
   return (
     <div
-      className="error-page h100vh w100vw flex-center flex-col"
+      className="error-page h-full w-full flex justify-center items-center flex-col"
       style={{ backgroundImage: 'linear-gradient(192deg, #404c66, #7c5772, #b3607d, #ea6689)' }}
     >
-      <div className="animate-bounce text-30">403</div>
+      <div className="animate-bounce text-[30px]">403</div>
       <Button
         onClick={() => {
           goToIndex()
