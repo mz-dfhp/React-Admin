@@ -1,6 +1,6 @@
 ## 介绍
 
-基于 Vite + React18 + TypeScript + Ant Design + React Router + Zustand + Unocss 实现的后台管理系统模板
+基于 Vite + React18 + TypeScript + Ant Design + React Router + Zustand + Tailwind 实现的后台管理系统模板
 
 项目采用 Eslint + Simple-git-hooks + Lint-staged 统一代码规范
 
