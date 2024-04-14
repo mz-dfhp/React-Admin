@@ -49,6 +49,7 @@ const AppMenu: React.FC<{ collapsed: boolean }> = ({ collapsed }) => {
         {!collapsed && <span className="overflow-hidden text-center">React-Admin</span>}
       </div>
       <Menu
+        className="border-none"
         mode="inline"
         theme="light"
         openKeys={openKeys}

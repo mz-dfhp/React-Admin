@@ -2,6 +2,7 @@ import type { Config } from 'tailwindcss'
 import { addDynamicIconSelectors } from '@iconify/tailwind'
 
 export default {
+  important: true,
   darkMode: 'selector',
   content: [
     './index.html',
