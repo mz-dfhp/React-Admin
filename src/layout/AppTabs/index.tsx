@@ -23,24 +23,14 @@ const AppTabs: React.FC = () => {
   const { routerList } = routerStore()
   const [activeKey, setActiveKey] = useState('')
   const { refresh } = useContext(AppLayoutContext)
-  function onChange(key: string) {
-    setActiveKey(key)
-  }
 
   function onEdit(key: any) {
     const index = tabsList.findIndex(item => item.key === key)
-    if (tabsList[index].key === activeKey) {
-      closeCurrentTabs(key)
-      navigate(tabsList[index === 0 ? 1 : index - 1].key, { replace: true })
-    }
-    else {
-      closeCurrentTabs(key)
-    }
+    closeCurrentTabs(key)
+    const navigateIndex = index + (tabsList.length - 1 === index ? -1 : 1)
+    navigate(tabsList[navigateIndex].key, { replace: true })
   }
 
-  function onTabClick(key: any) {
-    navigate(key)
-  }
   function onDropdownClick({ key }: any) {
     switch (+key) {
       case 1:
@@ -59,8 +49,7 @@ const AppTabs: React.FC = () => {
         closeRightTabs(activeKey)
         break
       case 6:
-        if (PageEnum.ROOT_INDEX !== activeKey)
-          navigate(PageEnum.ROOT_INDEX)
+        navigate(PageEnum.ROOT_INDEX)
         closeAllTabs()
         break
       default:
@@ -124,9 +113,9 @@ const AppTabs: React.FC = () => {
           activeKey={activeKey}
           items={tabsList}
           type="editable-card"
-          onChange={onChange}
+          onChange={key => setActiveKey(key)}
           onEdit={onEdit}
-          onTabClick={onTabClick}
+          onTabClick={key => navigate(key)}
         />
       </div>
       <Dropdown menu={{ items: dropdownList, onClick: onDropdownClick }} placement="bottomRight">

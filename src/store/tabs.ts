@@ -27,38 +27,29 @@ const tabsStore = create(persist<State & Action>(set => ({
   },
   closeLeftTabs: (key) => {
     set((state) => {
-      const list = [...state.tabsList]
-      const index: number = list.findIndex(item => item.key === key)
-      index !== -1 && list.splice(1, index - 1)
-      return { tabsList: list }
+      const i = state.tabsList.findIndex(item => item.key === key)
+      return { tabsList: state.tabsList.filter((item, index) => index >= i || !item.closable) }
     })
   },
   closeRightTabs: (key) => {
     set((state) => {
-      const list = [...state.tabsList]
-      const index: number = list.findIndex(item => item.key === key)
-      index !== -1 && list.splice(index + 1)
-      return { tabsList: list }
+      const i = state.tabsList.findIndex(item => item.key === key)
+      return { tabsList: state.tabsList.filter((item, index) => index <= i || !item.closable) }
     })
   },
   closeCurrentTabs: (key) => {
     set((state) => {
-      const list = [...state.tabsList]
-      const index: number = list.findIndex(item => item.key === key)
-      index !== -1 && list.splice(index, 1)
-      return { tabsList: list }
+      return { tabsList: state.tabsList.filter(item => item.key !== key || !item.closable) }
     })
   },
   closeOtherTabs: (key) => {
     set((state) => {
-      return { tabsList: state.tabsList.filter((item, index) => item.key === key || index === 0) }
+      return { tabsList: state.tabsList.filter(item => item.key === key || !item.closable) }
     })
   },
   closeAllTabs: () => {
     set((state) => {
-      const list = [...state.tabsList]
-      list.splice(1)
-      return { tabsList: list }
+      return { tabsList: state.tabsList.filter(item => !item.closable) }
     })
   },
 }), {
