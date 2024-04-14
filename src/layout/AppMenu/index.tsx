@@ -1,11 +1,11 @@
-import React, { memo, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { MenuProps } from 'antd'
 import { Menu } from 'antd'
 import { useLocation, useNavigate } from 'react-router-dom'
 import Logo from '@/assets/react.svg'
 import { routerStore } from '@/store/router'
 
-const AppMenu: React.FC<{ collapsed: boolean }> = ({ collapsed }) => {
+export default function AppMenu({ collapsed }: { collapsed: boolean }) {
   const { menuList } = routerStore()
   const [activeKeys, setActiveKeys] = useState<string[]>([])
   const [openKeys, setOpenKeys] = useState<string[]>([])
@@ -61,4 +61,3 @@ const AppMenu: React.FC<{ collapsed: boolean }> = ({ collapsed }) => {
     </div>
   )
 }
-export default memo(AppMenu)

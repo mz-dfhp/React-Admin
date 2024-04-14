@@ -55,7 +55,7 @@ const UploadFiles: React.FC<UploadFileProps> = (props) => {
     if (mount)
       onChange(fileList.map(item => item.url).join(','))
     else setMount(true)
-  }, [fileList])
+  }, [fileList, mount, onChange])
 
   async function customRequest(file: any) {
     console.log(file)

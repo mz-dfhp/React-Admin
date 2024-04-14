@@ -1,4 +1,4 @@
-import React, { memo, useContext } from 'react'
+import { useContext } from 'react'
 import { useFullscreen } from 'ahooks'
 
 import type { MenuProps } from 'antd'
@@ -13,7 +13,7 @@ const items: MenuProps['items'] = [
     label: '退出登录',
   },
 ]
-const AppHeader: React.FC<{ collapsed: boolean, setCollapsed: (e: boolean) => void }> = ({ collapsed, setCollapsed }) => {
+export default function AppHeader({ collapsed, setCollapsed }: { collapsed: boolean, setCollapsed: (e: boolean) => void }) {
   const { userInfo } = userStore()
   const { isDark, toggleDark } = settingStore()
   const { refresh } = useContext(AppLayoutContext)
@@ -69,4 +69,3 @@ const AppHeader: React.FC<{ collapsed: boolean, setCollapsed: (e: boolean) => vo
     </div>
   )
 }
-export default memo(AppHeader)

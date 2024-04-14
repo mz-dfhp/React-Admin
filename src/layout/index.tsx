@@ -17,7 +17,7 @@ export const AppLayoutContext = createContext<{
   refresh: () => void
 }>(defaultContext)
 
-function AppLayout() {
+export default function AppLayout() {
   const { token: { colorBgContainer } } = theme.useToken()
   const [refreshing, setRefreshing] = useState(false)
   const { setMenuList } = routerStore()
@@ -40,7 +40,7 @@ function AppLayout() {
     return () => {
       window.removeEventListener('resize', handleSize)
     }
-  }, [])
+  }, [setMenuList])
 
   return (
     <AppLayoutContext.Provider value={{ refresh }}>
@@ -72,4 +72,3 @@ function AppLayout() {
     </AppLayoutContext.Provider>
   )
 }
-export default AppLayout

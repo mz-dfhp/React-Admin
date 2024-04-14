@@ -1,8 +1,8 @@
-import React, { Suspense, memo } from 'react'
+import { Suspense } from 'react'
 import { Outlet } from 'react-router-dom'
 import { Spin } from 'antd'
 
-const AppMain: React.FC = () => {
+export default function AppMain() {
   return (
     <Suspense
       fallback={(
@@ -15,5 +15,3 @@ const AppMain: React.FC = () => {
     </Suspense>
   )
 }
-
-export default memo(AppMain)
