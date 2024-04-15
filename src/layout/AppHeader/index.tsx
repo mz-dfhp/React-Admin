@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { useFullscreen } from 'ahooks'
 
 import type { MenuProps } from 'antd'
-import { Avatar, Dropdown } from 'antd'
+import { Avatar, Dropdown, Tooltip } from 'antd'
 import { userStore } from '@/store/user'
 import { AppLayoutContext } from '@/layout'
 import { settingStore } from '@/store/setting'
@@ -15,7 +15,7 @@ const items: MenuProps['items'] = [
 ]
 export default function AppHeader({ collapsed, setCollapsed }: { collapsed: boolean, setCollapsed: (e: boolean) => void }) {
   const { userInfo } = userStore()
-  const { isDark, toggleDark } = settingStore()
+  const { isDark, toggleDark, locale, toggleLocale } = settingStore()
   const { refresh } = useContext(AppLayoutContext)
   const [isFullscreen, { toggleFullscreen }] = useFullscreen(document.body)
 
@@ -32,8 +32,15 @@ export default function AppHeader({ collapsed, setCollapsed }: { collapsed: bool
         onClick={() => setCollapsed(!collapsed)}
       />
       <div className="ml-auto flex items-center justify-around px-[25px]">
+        <Tooltip title={locale}>
+          <div
+            className="icon-[bi--arrow-left-right] ml-[20px] cursor-pointer transition-all hover:scale-[1.2]"
+            onClick={() => toggleLocale(locale === 'zh-cn' ? 'en' : 'zh-cn')}
+          >
+          </div>
+        </Tooltip>
         <div
-          className="icon-[bi--github] ml-[15px] cursor-pointer transition-all hover:scale-[1.2]"
+          className="icon-[bi--github] ml-[20px] cursor-pointer transition-all hover:scale-[1.2]"
           onClick={() => window.open('https://github.com/mz-dfhp/React-Admin')}
         >
         </div>

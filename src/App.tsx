@@ -1,19 +1,18 @@
 import { useEffect, useState } from 'react'
 import { useLocation, useNavigate, useRoutes } from 'react-router-dom'
-
-import { ConfigProvider, theme } from 'antd'
+import enUS from 'antd/locale/en_US'
 import zhCN from 'antd/locale/zh_CN'
 import dayjs from 'dayjs'
+
+import { ConfigProvider, theme } from 'antd'
 import { routerList } from '@/router'
 import { userStore } from '@/store/user'
 
 import 'dayjs/locale/zh-cn'
 import { settingStore } from '@/store/setting'
 
-dayjs.locale('zh-cn')
-
 function App() {
-  const { isDark } = settingStore()
+  const { isDark, locale } = settingStore()
   const location = useLocation()
   const navigate = useNavigate()
   const element = useRoutes(routerList)
@@ -33,14 +32,20 @@ function App() {
     }
     setLoad(true)
   }, [location.pathname, navigate, token])
+
   useEffect(() => {
     const html = document.querySelector('html')
     html?.classList.add(isDark ? 'dark' : 'light')
     html?.classList.remove(isDark ? 'light' : 'dark')
   }, [isDark])
+
+  useEffect(() => {
+    dayjs.locale(locale)
+  }, [locale])
+
   return (
     <ConfigProvider
-      locale={zhCN}
+      locale={locale === 'zh-cn' ? zhCN : enUS}
       theme={{
         algorithm: isDark ? theme.darkAlgorithm : theme.defaultAlgorithm,
         cssVar: true,

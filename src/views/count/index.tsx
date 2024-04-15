@@ -1,4 +1,4 @@
-import { Button, Space } from 'antd'
+import { Button, DatePicker, Space } from 'antd'
 import { countStore } from '@/store/count'
 
 export default function Count() {
@@ -10,6 +10,9 @@ export default function Count() {
         <Button type="primary" onClick={() => decrement(1)}>+</Button>
         <Button type="primary" onClick={() => increment(1)}>-</Button>
       </Space>
+      <div>
+        <DatePicker />
+      </div>
     </div>
   )
 }
