@@ -63,9 +63,9 @@ export default function AppLayout() {
             </Layout>
             )
           : (
-            <div className="h-[100vh] w-[100vw] flex items-center justify-center overflow-hidden bg-transparent">
+            <Layout className="h-[100vh] flex items-center justify-center overflow-hidden">
               <Spin size="large" />
-            </div>
+            </Layout>
             )
       }
 
