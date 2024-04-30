@@ -35,7 +35,7 @@ http.interceptors.response.use(
       return Promise.reject(config.data)
     }
     // 错误异常
-    else if (config.data.code !== responseCodeEnum.SUCCEE_CODE) {
+    else if (config.data.code !== responseCodeEnum.SUCCESS_CODE) {
       antdMessage.error(config.data.message)
       return Promise.reject(config.data)
     }
