@@ -1,76 +1,76 @@
 .custom-app-tabs {
-    .ant-tabs-nav {
-        margin: 0 !important;
+  .ant-tabs-nav {
+    margin: 0 !important;
+
+    &::before {
+      display: none;
+    }
+
+    .ant-tabs-nav-list {
+      .ant-tabs-tab {
+        position: relative;
+        border-radius: 2px;
+        border: none;
+        margin-left: 0 !important;
+        box-sizing: border-box;
+        margin-right: 16px;
+
+        &::after {
+          position: absolute;
+          content: '';
+          top: 50%;
+          left: -8px;
+          width: 1px;
+          height: 60%;
+          background: var(--ant-color-primary);
+          border-radius: 1px;
+          opacity: 1;
+          transform: translateY(-50%) scaleX(0.5);
+        }
+
+        .ant-tabs-tab-remove {
+          display: none;
+
+          svg {
+            color: var(--ant-color-primary);
+          }
+        }
 
         &::before {
-            display: none;
+          position: absolute;
+          content: '';
+          bottom: 0;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background: var(--ant-color-primary);
+          transition: 0.3s;
         }
 
-        .ant-tabs-nav-list {
-            .ant-tabs-tab {
-                position: relative;
-                border-radius: 2px;
-                border: none;
-                margin-left: 0 !important;
-                box-sizing: border-box;
-                margin-right: 16px;
+        &:hover {
+          background: var(--ant-blue-2);
 
-                &::after {
-                    position: absolute;
-                    content: "";
-                    top: 50%;
-                    left: -8px;
-                    width: 1px;
-                    height: 60%;
-                    background: var(--ant-color-primary);
-                    border-radius: 1px;
-                    opacity: 1;
-                    transform: translateY(-50%) scaleX(.5);
-                }
+          &::before {
+            width: 100%;
+          }
 
-                .ant-tabs-tab-remove {
-                    display: none;
-
-                    svg {
-                        color: var(--ant-color-primary);
-                    }
-                }
-
-                &::before {
-                    position: absolute;
-                    content: "";
-                    bottom: 0;
-                    left: 0;
-                    width: 0;
-                    height: 2px;
-                    background: var(--ant-color-primary);
-                    transition: .3s;
-                }
-
-                &:hover {
-                    background: var(--ant-blue-2);
-
-                    &::before {
-                        width: 100%;
-                    }
-
-                    .ant-tabs-tab-remove {
-                        display: block;
-                    }
-                }
-
-                &.ant-tabs-tab-active {
-                    background: var(--ant-blue-2);
-
-                    &::before {
-                        width: 100%;
-                    }
-
-                    .ant-tabs-tab-remove {
-                        display: block;
-                    }
-                }
-            }
+          .ant-tabs-tab-remove {
+            display: block;
+          }
         }
+
+        &.ant-tabs-tab-active {
+          background: var(--ant-blue-2);
+
+          &::before {
+            width: 100%;
+          }
+
+          .ant-tabs-tab-remove {
+            display: block;
+          }
+        }
+      }
     }
+  }
 }
