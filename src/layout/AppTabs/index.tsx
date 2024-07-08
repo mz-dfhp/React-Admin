@@ -4,7 +4,7 @@ import { Dropdown, Tabs } from 'antd'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { tabsStore } from '@/store/tabs'
 import { routerStore } from '@/store/router'
-import { PageEnum } from '@/enmus'
+import { PageEnum } from '@/enums'
 import { AppLayoutContext } from '@/layout'
 import '@/layout/AppTabs/index.scss'
 
