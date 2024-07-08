@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { message as antdMessage } from 'antd'
-import { requestConfigEnum, responseCodeEnum } from '@/enmus/http'
+import { requestConfigEnum, responseCodeEnum } from '@/enums/http'
 import { loginOut } from '@/api/index'
 import { userStore } from '@/store/user'
 
