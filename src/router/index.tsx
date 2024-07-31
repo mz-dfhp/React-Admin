@@ -1,19 +1,16 @@
 /* eslint-disable react-refresh/only-export-components */
 import { lazy } from 'react'
-
-import { Outlet } from 'react-router-dom'
+import { modulesRoutes } from './moduleRoutes'
 import Layout from '@/layout/index'
 
 const Login = lazy(() => import('@/views/login'))
 
-const Index = lazy(() => import('@/views/index'))
-const Count = lazy(() => import('@/views/count/index'))
 const Error404 = lazy(() => import('@/views/error/404'))
 const Error403 = lazy(() => import('@/views/error/403'))
 
 export interface IRoute {
   path: string
-  element?: JSX.Element
+  element: React.ReactNode | null
   meta: {
     title?: string
     icon?: JSX.Element
@@ -22,69 +19,6 @@ export interface IRoute {
   redirect?: string
   children?: IRoute[]
 }
-
-export const menuList: IRoute[] = [
-  {
-    path: '/index',
-    element: <Index />,
-    meta: {
-      title: '工作台',
-      icon: <div className="icon-[bi--grid-fill]" />,
-    },
-  },
-  {
-    path: '/count',
-    element: <Count />,
-    meta: {
-      title: 'Count',
-      icon: <div className="icon-[bi--grid-fill]" />,
-    },
-  },
-  {
-    path: '/test1',
-    element: <div><Outlet /></div>,
-    meta: {
-      title: '测试1',
-      icon: <div className="icon-[bi--grid-fill]" />,
-    },
-    children: [
-      {
-        path: '/test1/test1-1',
-        element: <div>测试1-1</div>,
-        meta: {
-          title: '测试1-1',
-          icon: <div className="icon-[bi--grid-fill]" />,
-        },
-      },
-    ],
-  },
-  {
-    path: '/test2',
-    element: <div><Outlet /></div>,
-    meta: {
-      title: '测试2',
-      icon: <div className="icon-[bi--grid-fill]" />,
-    },
-    children: [
-      {
-        path: '/test2/test2-1',
-        element: <div>测试2-1</div>,
-        meta: {
-          title: '测试2-1',
-          icon: <div className="icon-[bi--grid-fill]" />,
-        },
-      },
-      {
-        path: '/test2/test2-2',
-        element: <div>测试2-2</div>,
-        meta: {
-          title: '测试2-2',
-          icon: <div className="icon-[bi--grid-fill]" />,
-        },
-      },
-    ],
-  },
-]
 
 export const staticList: IRoute[] = [
   {
@@ -103,7 +37,7 @@ export const routerList: IRoute[] = [
     meta: {
       title: '首页',
     },
-    children: menuList,
+    children: modulesRoutes,
   },
   ...staticList,
   {
