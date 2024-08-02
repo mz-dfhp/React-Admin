@@ -8,7 +8,7 @@ interface State {
 
 interface Action {
   toggleDark: () => void
-  toggleLocale: (value: State['locale']) => void
+  setLocale: (value: State['locale']) => void
 }
 
 const settingStore = create(persist<State & Action>(set => ({
@@ -17,7 +17,7 @@ const settingStore = create(persist<State & Action>(set => ({
     set(state => ({ isDark: !state.isDark }))
   },
   locale: 'zh-cn',
-  toggleLocale: (value) => {
+  setLocale: (value) => {
     set(() => ({ locale: value }))
   },
 }), {

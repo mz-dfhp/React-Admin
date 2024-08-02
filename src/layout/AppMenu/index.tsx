@@ -39,8 +39,8 @@ export default function AppMenu({ collapsed }: { collapsed: boolean }) {
   }
 
   return (
-    <div className="h-[100vh]">
-      <div className="logo h-[64px] w-full flex items-center justify-center">
+    <div className="h-[100vh] flex flex-col">
+      <div className="h-[64px] w-full flex items-center justify-center">
         <img
           src={Logo}
           className="logo mx-[10px] h-[32px] w-[32px] animate-spin-slow rounded-full"
@@ -48,16 +48,18 @@ export default function AppMenu({ collapsed }: { collapsed: boolean }) {
         />
         {!collapsed && <span className="overflow-hidden text-center">React-Admin</span>}
       </div>
-      <Menu
-        className="border-none"
-        mode="inline"
-        theme="light"
-        openKeys={openKeys}
-        onOpenChange={onOpenChange}
-        selectedKeys={activeKeys}
-        onClick={e => onChangeMenu(e)}
-        items={menuList}
-      />
+      <div className="flex-1 overflow-y-auto">
+        <Menu
+          className="border-none"
+          mode="inline"
+          theme="light"
+          openKeys={openKeys}
+          onOpenChange={onOpenChange}
+          selectedKeys={activeKeys}
+          onClick={e => onChangeMenu(e)}
+          items={menuList}
+        />
+      </div>
     </div>
   )
 }

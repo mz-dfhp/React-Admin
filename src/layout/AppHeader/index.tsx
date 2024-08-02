@@ -15,7 +15,7 @@ const items: MenuProps['items'] = [
 ]
 export default function AppHeader({ collapsed, setCollapsed }: { collapsed: boolean, setCollapsed: (e: boolean) => void }) {
   const { userInfo } = userStore()
-  const { isDark, toggleDark, locale, toggleLocale } = settingStore()
+  const { isDark, toggleDark, locale, setLocale } = settingStore()
   const { refresh } = useContext(AppLayoutContext)
   const [isFullscreen, { toggleFullscreen }] = useFullscreen(document.body)
 
@@ -35,7 +35,7 @@ export default function AppHeader({ collapsed, setCollapsed }: { collapsed: bool
         <Tooltip title={locale}>
           <div
             className="icon-[bi--arrow-left-right] ml-[20px] cursor-pointer transition-all hover:scale-[1.2]"
-            onClick={() => toggleLocale(locale === 'zh-cn' ? 'en' : 'zh-cn')}
+            onClick={() => setLocale(locale === 'zh-cn' ? 'en' : 'zh-cn')}
           >
           </div>
         </Tooltip>
