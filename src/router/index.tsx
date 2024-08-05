@@ -1,12 +1,6 @@
-/* eslint-disable react-refresh/only-export-components */
 import { lazy } from 'react'
 import { modulesRoutes } from './moduleRoutes'
 import Layout from '@/layout/index'
-
-const Login = lazy(() => import('@/views/login'))
-
-const Error404 = lazy(() => import('@/views/error/404'))
-const Error403 = lazy(() => import('@/views/error/403'))
 
 export interface IRoute {
   path: string
@@ -20,16 +14,6 @@ export interface IRoute {
   children?: IRoute[]
 }
 
-export const staticList: IRoute[] = [
-  {
-    path: '/login',
-    element: <Login />,
-    meta: {
-      title: '登录',
-    },
-  },
-]
-
 export const routerList: IRoute[] = [
   {
     path: '/',
@@ -39,17 +23,16 @@ export const routerList: IRoute[] = [
     },
     children: modulesRoutes,
   },
-  ...staticList,
   {
-    path: '403',
-    element: <Error403 />,
+    path: '/login',
+    element: (Component => <Component />)(lazy(() => import('@/views/basics/login'))),
     meta: {
-      title: '404',
+      title: '登录',
     },
   },
   {
     path: '*',
-    element: <Error404 />,
+    element: (Component => <Component />)(lazy(() => import('@/views/basics/404'))),
     meta: {
       title: '404',
     },

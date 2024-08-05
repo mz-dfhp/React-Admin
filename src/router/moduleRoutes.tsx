@@ -3,7 +3,7 @@ import type { IRoute } from '.'
 
 type ImportMetaGlob = Record<string, () => Promise<{ default: React.ComponentType }>>
 
-const modules = import.meta.glob(['../views/**/*.(t|j)sx', '!../views/(login|error)/**']) as ImportMetaGlob
+const modules = import.meta.glob(['../views/**/*.(t|j)sx', '!../views/basics/**']) as ImportMetaGlob
 
 const modulesRoutes: Array<IRoute> = Object.entries(modules).map(([key, value]) => {
   const path = key
