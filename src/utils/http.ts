@@ -43,13 +43,6 @@ http.interceptors.response.use(
   },
   (error) => {
     let message = error.message
-    if (error?.response?.data?.code === responseCodeEnum.LOGIN_CODE) {
-      antdMessage.error(message)
-      setTimeout(() => {
-        loginOut()
-      }, 500)
-      return Promise.reject(error)
-    }
     if (message === 'Network Error')
       message = '网络故障'
 
