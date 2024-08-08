@@ -2,6 +2,16 @@ import { Button, Card } from 'antd'
 import { useCallback, useState } from 'react'
 import CodeHighlighter from '@/components/CodeHighlighter'
 
+const code = `
+function useUpdate() {
+  const [, forceUpdate] = useState({})
+  const update = useCallback(() => {
+    return forceUpdate({})
+  }, [])
+  return update
+}
+`
+
 function useUpdate() {
   const [, forceUpdate] = useState({})
   const update = useCallback(() => {
@@ -25,7 +35,7 @@ export default function Index() {
           </div>
         </Card>
         <Card>
-          <CodeHighlighter code={useUpdate.toString()} />
+          <CodeHighlighter code={code} />
         </Card>
       </div>
     </>
