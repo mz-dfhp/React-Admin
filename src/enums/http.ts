@@ -16,7 +16,7 @@ export enum responseCodeEnum {
 }
 
 export enum requestConfigEnum {
-  'BASE_URL' = '/proxy',
-  'TIME_OUT' = 20000,
+  'BASE_URL' = '/api',
+  'TIME_OUT' = 100000,
   'TOKEN_NAME' = 'Authorization',
 }
