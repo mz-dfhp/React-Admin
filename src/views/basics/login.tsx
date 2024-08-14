@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Button, Form, Input, message, theme } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import { userStore } from '@/store/user'
+import { getUserInfo, login } from '@/api/user'
 import LoginSvg from '@/assets/login-bg.svg'
 
-const Login: React.FC = () => {
+export default function Login() {
   const { token: { colorBgContainer } } = theme.useToken()
   const { setUserInfo, setToken } = userStore()
   const navigate = useNavigate()
@@ -17,16 +18,9 @@ const Login: React.FC = () => {
       if (values.username !== 'admin' || values.password !== '123456')
         return message.error('登录失败')
       setLoading(true)
-      const { data: { token, userInfo } } = await Promise.resolve({
-        data: {
-          token: 'token',
-          userInfo: {
-            username: 'admin',
-            avatar: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-          },
-        },
-      })
+      const { data: { token } } = await login(values)
       setToken(token)
+      const { data: { userInfo } } = await getUserInfo()
       setUserInfo(userInfo)
       message.success('登录成功')
       navigate('/', {
@@ -115,4 +109,3 @@ const Login: React.FC = () => {
     </div>
   )
 }
-export default Login
