@@ -25,6 +25,7 @@ interface UploadFileProps {
   onChange?: (url: string) => void
 }
 
+const fn = () => ({})
 const UploadFiles: React.FC<UploadFileProps> = (props) => {
   const {
     maxCount = 1,
@@ -35,7 +36,7 @@ const UploadFiles: React.FC<UploadFileProps> = (props) => {
     width = 120,
     height = 120,
     borderRadius = 8,
-    onChange = () => ({}),
+    onChange = fn,
   } = props
 
   const list: UploadFile[] = value.split(',').filter(item => item).map((item) => {
@@ -102,24 +103,24 @@ const UploadFiles: React.FC<UploadFileProps> = (props) => {
         <div className="file-wrapper">
           {validFileType(file.url) === 'video'
             ? (
-              <video
-                controls
-                style={{ borderRadius }}
-                width={width}
-                height={height}
-              >
-                <source src={file.url} type="video/mp4" />
-                <source src={file.url}type="video/ogg" />
-                您的浏览器不支持Video标签。
-              </video>
+                <video
+                  controls
+                  style={{ borderRadius }}
+                  width={width}
+                  height={height}
+                >
+                  <source src={file.url} type="video/mp4" />
+                  <source src={file.url}type="video/ogg" />
+                  您的浏览器不支持Video标签。
+                </video>
               )
             : (
-              <Image
-                style={{ borderRadius }}
-                width={width}
-                height={height}
-                src={file.url}
-              />
+                <Image
+                  style={{ borderRadius }}
+                  width={width}
+                  height={height}
+                  src={file.url}
+                />
               )}
           <svg className="remove-icon" onClick={() => onRemove(file.url)} xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16">
             <path fill="currentColor" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z" />
@@ -133,16 +134,16 @@ const UploadFiles: React.FC<UploadFileProps> = (props) => {
       {fileList.length === maxCount
         ? null
         : (
-          <div style={{
-            width,
-            height,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-          >
-            <span>{ title }</span>
-          </div>
+            <div style={{
+              width,
+              height,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+            >
+              <span>{ title }</span>
+            </div>
           )}
     </Upload>
   )

@@ -47,22 +47,20 @@ export default function Index() {
   const [countInfo] = useState(initializerCount)
 
   return (
-    <>
-      <div className="top-card">
-        <Row gutter={[16, 16]}>
-          {cardList.map((item) => {
-            return (
-              <Col key={item.key} xs={24} sm={12} md={12} lg={6} xl={6}>
-                <Card title={item.title} bordered={false} hoverable style={item.style}>
-                  <div className="p-[15px] text-[36px] text-white font-bold">
-                    <NumberCounter value={countInfo[item.key]} />
-                  </div>
-                </Card>
-              </Col>
-            )
-          })}
-        </Row>
-      </div>
-    </>
+    <div className="top-card">
+      <Row gutter={[16, 16]}>
+        {cardList.map((item) => {
+          return (
+            <Col key={item.key} xs={24} sm={12} md={12} lg={6} xl={6}>
+              <Card title={item.title} bordered={false} hoverable style={item.style}>
+                <div className="p-[15px] text-[36px] text-white font-bold">
+                  <NumberCounter value={countInfo[item.key]} />
+                </div>
+              </Card>
+            </Col>
+          )
+        })}
+      </Row>
+    </div>
   )
 }

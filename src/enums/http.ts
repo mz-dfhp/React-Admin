@@ -10,13 +10,13 @@ export enum requestContentTypeEnum {
 }
 
 export enum responseCodeEnum {
-  'SUCCESS_CODE' = 0,
-  'LOGIN_CODE' = -1,
-  'ERROR_CODE' = -2,
+  SUCCESS_CODE = 0,
+  LOGIN_CODE = -1,
+  ERROR_CODE = -2,
 }
 
 export enum requestConfigEnum {
-  'BASE_URL' = '/api',
-  'TIME_OUT' = 100000,
-  'TOKEN_NAME' = 'Authorization',
+  BASE_URL = '/api',
+  TIME_OUT = 100000,
+  TOKEN_NAME = 'Authorization',
 }

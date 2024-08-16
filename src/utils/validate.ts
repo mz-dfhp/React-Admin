@@ -4,7 +4,7 @@
  * @returns {boolean} boolean
  */
 export function isExternal(path: string) {
-  return /^(https?:|mailto:|tel:)/.test(path)
+  return /^(?:https?:|mailto:|tel:)/.test(path)
 }
 
 /**
@@ -22,7 +22,7 @@ export function isPassword(value: string | any[]) {
  * @returns {boolean} boolean
  */
 export function isNumber(value: string) {
-  const reg = /^[0-9]*$/
+  const reg = /^\d*$/
   return reg.test(value)
 }
 
@@ -32,7 +32,7 @@ export function isNumber(value: string) {
  * @returns {boolean} boolean
  */
 export function isName(value: string) {
-  const reg = /^[\u4E00-\u9FA5a-zA-Z0-9]+$/
+  const reg = /^[\u4E00-\u9FA5a-z0-9]+$/i
   return reg.test(value)
 }
 
@@ -43,7 +43,7 @@ export function isName(value: string) {
  */
 export function isIP(ip: string) {
   const reg
-    = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/
+    = /^(?:\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(?:\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(?:\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(?:\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/
   return reg.test(ip)
 }
 
@@ -54,7 +54,7 @@ export function isIP(ip: string) {
  */
 export function isUrl(url: string) {
   const reg
-    = /^(https?|ftp):\/\/([a-zA-Z0-9.-]+(:[a-zA-Z0-9.&%$-]+)*@)*((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])){3}|([a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]+\.(com|edu|gov|int|mil|net|org|biz|arpa|info|name|pro|aero|coop|museum|[a-zA-Z]{2}))(:[0-9]+)*(\/($|[a-zA-Z0-9.,?'\\+&%$#=~_-]+))*$/
+    = /^(?:https?|ftp):\/\/(?:[a-zA-Z0-9.-]+(?::[a-zA-Z0-9.&%$-]+)*@)*(?:(?:25[0-5]|2[0-4]\d|1\d{2}|[1-9]\d?)(?:\.(?:25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)){3}|(?:[a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]+\.(?:com|edu|gov|int|mil|net|org|biz|arpa|info|name|pro|aero|coop|museum|[a-zA-Z]{2}))(?::\d+)*(?:\/(?:$|[\w.,?'\\+&%$#=~-]+))*$/
   return reg.test(url)
 }
 
@@ -84,7 +84,7 @@ export function isUpperCase(value: string) {
  * @returns {boolean} boolean
  */
 export function isAlphabets(value: string) {
-  const reg = /^[A-Za-z]+$/
+  const reg = /^[A-Z]+$/i
   return reg.test(value)
 }
 
@@ -115,7 +115,7 @@ export function isArray(arg: any) {
  */
 export function isPort(value: string) {
   const reg
-    = /^([0-9]|[1-9]\d|[1-9]\d{2}|[1-9]\d{3}|[1-5]\d{4}|6[0-4]\d{3}|65[0-4]\d{2}|655[0-2]\d|6553[0-5])$/
+    = /^(?:\d|[1-9]\d|[1-9]\d{2}|[1-9]\d{3}|[1-5]\d{4}|6[0-4]\d{3}|65[0-4]\d{2}|655[0-2]\d|6553[0-5])$/
   return reg.test(value)
 }
 
@@ -136,7 +136,7 @@ export function isPhone(value: string) {
  */
 export function isIdCard(value: string) {
   const reg
-    = /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/
+    = /^[1-9]\d{5}(?:18|19|[23]\d)\d{2}(?:0[1-9]|10|11|12)(?:[0-2][1-9]|10|20|30|31)\d{3}[0-9X]$/i
   return reg.test(value)
 }
 
@@ -146,7 +146,7 @@ export function isIdCard(value: string) {
  * @returns {boolean} boolean
  */
 export function isEmail(value: string) {
-  const reg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
+  const reg = /^\w+(?:[-+.]\w+)*@\w+(?:[-.]\w+)*\.\w+(?:[-.]\w+)*$/
   return reg.test(value)
 }
 
@@ -192,7 +192,7 @@ export function isBlank(value: string | null) {
  */
 export function isTel(value: string) {
   const reg
-    = /^(400|800)([0-9\\-]{7,10})|(([0-9]{4}|[0-9]{3})([- ])?)?([0-9]{7,8})(([- 转])*([0-9]{1,4}))?$/
+    = /^(?:400|800)[0-9\\-]{7,10}|(?:(?:\d{4}|\d{3})[- ]?)?\d{7,8}(?:[- 转]*\d{1,4})?$/
   return reg.test(value)
 }
 
@@ -202,7 +202,7 @@ export function isTel(value: string) {
  * @returns {boolean} boolean
  */
 export function isNum(value: string) {
-  const reg = /^\d+(\.\d{1,2})?$/
+  const reg = /^\d+(?:\.\d{1,2})?$/
   return reg.test(value)
 }
 
@@ -217,6 +217,7 @@ export function isJson(value: string) {
       const obj = JSON.parse(value)
       return !!(typeof obj == 'object' && obj)
     }
+    // eslint-disable-next-line unused-imports/no-unused-vars
     catch (e) {
       return false
     }

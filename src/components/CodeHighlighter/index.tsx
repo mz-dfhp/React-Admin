@@ -19,6 +19,7 @@ function CodeHighlighter({ code, language }: { code: string, language?: string }
   }, [code, language])
 
   return (
+    // eslint-disable-next-line react-dom/no-dangerously-set-innerhtml
     <div dangerouslySetInnerHTML={{ __html: html }} />
   )
 }

@@ -15,14 +15,14 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   >
     {import.meta.env.MODE === 'github'
       ? (
-        <HashRouter>
-          <App />
-        </HashRouter>
+          <HashRouter>
+            <App />
+          </HashRouter>
         )
       : (
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
         )}
   </Suspense>,
 )

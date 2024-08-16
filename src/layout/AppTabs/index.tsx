@@ -98,7 +98,9 @@ const AppTabs: React.FC = () => {
       return
     const item = routerList.find(item => item.key === location.pathname)
     const index = tabsList.findIndex(item => item.key === location.pathname)
-    index === -1 && item && addTabs({ ...item, closable: item.key !== PageEnum.ROOT_INDEX })
+    if (index === -1 && item) {
+      addTabs({ ...item, closable: item.key !== PageEnum.ROOT_INDEX })
+    }
     setActiveKey(location.pathname)
   }, [activeKey, addTabs, location.pathname, routerList, tabsList])
 

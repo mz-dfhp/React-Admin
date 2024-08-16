@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useCallback, useEffect, useMemo, useState } from 'react'
 import { throttle } from 'lodash-es'
 import { Layout, Spin, theme } from 'antd'
 import { routerStore } from '@/store/router'
@@ -27,12 +27,13 @@ export default function AppLayout() {
     setCollapsed(window.innerWidth < 800)
   }
 
-  function refresh() {
+  const refresh = useCallback(() => {
     setRefreshing(true)
     setTimeout(() => {
       setRefreshing(false)
     })
-  }
+  }, [])
+
   useEffect(() => {
     setMenuList()
     handleSize()
@@ -42,33 +43,34 @@ export default function AppLayout() {
     }
   }, [setMenuList])
 
+  const contextValue = useMemo(() => ({ refresh }), [refresh])
+
   return (
-    <AppLayoutContext.Provider value={{ refresh }}>
+    <AppLayoutContext.Provider value={contextValue}>
       {
         !refreshing
           ? (
-            <Layout className="h-[100vh]">
-              <Sider trigger={null} theme="light" collapsible collapsed={collapsed}>
-                <AppMenu collapsed={collapsed} />
-              </Sider>
-              <Layout>
-                <Header className="h-auto px-0 leading-none" style={{ background: colorBgContainer }}>
-                  <AppHeader collapsed={collapsed} setCollapsed={setCollapsed} />
-                  <AppTabs />
-                </Header>
-                <Content className="overflow-y-auto p-[20px]">
-                  <AppMain />
-                </Content>
+              <Layout className="h-[100vh]">
+                <Sider trigger={null} theme="light" collapsible collapsed={collapsed}>
+                  <AppMenu collapsed={collapsed} />
+                </Sider>
+                <Layout>
+                  <Header className="h-auto px-0 leading-none" style={{ background: colorBgContainer }}>
+                    <AppHeader collapsed={collapsed} setCollapsed={setCollapsed} />
+                    <AppTabs />
+                  </Header>
+                  <Content className="overflow-y-auto p-[20px]">
+                    <AppMain />
+                  </Content>
+                </Layout>
               </Layout>
-            </Layout>
             )
           : (
-            <Layout className="h-[100vh] flex items-center justify-center overflow-hidden">
-              <Spin size="large" />
-            </Layout>
+              <Layout className="h-[100vh] flex items-center justify-center overflow-hidden">
+                <Spin size="large" />
+              </Layout>
             )
       }
-
     </AppLayoutContext.Provider>
   )
 }
