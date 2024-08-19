@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import type { IRoute } from '@/router'
-import { menuList as routerMenuList } from '@/router/moduleRoutes'
+import { menuList as routerMenuList } from '@/router/asyncRoutes'
 
 export interface Routes {
   key: string

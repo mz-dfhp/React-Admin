@@ -1,5 +1,5 @@
 import { lazy } from 'react'
-import { modulesRoutes } from './moduleRoutes'
+import { asyncRoutes } from './asyncRoutes'
 import Layout from '@/layout/index'
 
 export interface IRoute {
@@ -21,7 +21,7 @@ export const routerList: IRoute[] = [
     meta: {
       title: '首页',
     },
-    children: modulesRoutes,
+    children: [...asyncRoutes],
   },
   {
     path: '/login',

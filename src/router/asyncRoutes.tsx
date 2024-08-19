@@ -5,7 +5,7 @@ type ImportMetaGlob = Record<string, () => Promise<{ default: React.ComponentTyp
 
 const modules = import.meta.glob(['../views/**/*.(t|j)sx', '!../views/basics/**']) as ImportMetaGlob
 
-const modulesRoutes: Array<IRoute> = Object.entries(modules).map(([key, value]) => {
+const asyncRoutes: Array<IRoute> = Object.entries(modules).map(([key, value]) => {
   const path = key
     .replace('../views', '')
     .replace(/\.(j|t)sx$/, '')
@@ -21,7 +21,7 @@ const modulesRoutes: Array<IRoute> = Object.entries(modules).map(([key, value]) 
   }
 })
 
-const menuList = buildTree(modulesRoutes)
+const menuList = buildTree(asyncRoutes)
 
 function buildTree(routes: IRoute[]): IRoute[] {
   const root: IRoute[] = []
@@ -40,7 +40,7 @@ function buildTree(routes: IRoute[]): IRoute[] {
           element: null,
           children: [],
           meta: {
-            title: partPath.slice(1),
+            title: partPath.split('/').slice(-1)[0],
             icon: <div className="icon-[bi--grid-fill]" />,
           },
         }
@@ -60,4 +60,4 @@ function buildTree(routes: IRoute[]): IRoute[] {
   return root
 }
 
-export { modulesRoutes, menuList }
+export { asyncRoutes, menuList }
