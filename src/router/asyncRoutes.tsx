@@ -47,11 +47,13 @@ function buildTree(routes: IRoute[]): IRoute[] {
         currentLevel.push(existingNode)
       }
 
-      if (index === parts.length - 1)
-        existingNode = { ...route }
+      if (index === parts.length - 1) {
+        existingNode.element = route.element
+      }
 
-      if (!existingNode.children)
+      if (!existingNode.children) {
         existingNode.children = []
+      }
 
       currentLevel = existingNode.children
     })
@@ -59,5 +61,4 @@ function buildTree(routes: IRoute[]): IRoute[] {
 
   return root
 }
-
 export { asyncRoutes, menuList }
