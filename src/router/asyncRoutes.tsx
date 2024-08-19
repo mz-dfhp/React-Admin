@@ -49,6 +49,7 @@ function buildTree(routes: IRoute[]): IRoute[] {
 
       if (index === parts.length - 1) {
         existingNode.element = route.element
+        existingNode.meta = { ...route.meta, ...existingNode.meta }
       }
 
       if (!existingNode.children) {
