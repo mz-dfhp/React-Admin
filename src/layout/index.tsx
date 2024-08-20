@@ -50,7 +50,7 @@ export default function AppLayout() {
       {
         !refreshing
           ? (
-              <Layout className="h-[100vh]">
+              <Layout className="h-full">
                 <Sider trigger={null} theme="light" collapsible collapsed={collapsed}>
                   <AppMenu collapsed={collapsed} />
                 </Sider>
@@ -66,7 +66,7 @@ export default function AppLayout() {
               </Layout>
             )
           : (
-              <Layout className="h-[100vh] flex items-center justify-center overflow-hidden">
+              <Layout className="h-full flex items-center justify-center overflow-hidden">
                 <Spin size="large" />
               </Layout>
             )

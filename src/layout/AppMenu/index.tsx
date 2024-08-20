@@ -39,7 +39,7 @@ export default function AppMenu({ collapsed }: { collapsed: boolean }) {
   }
 
   return (
-    <div className="h-[100vh] flex flex-col">
+    <div className="h-full flex flex-col">
       <div className="h-[64px] w-full flex items-center justify-center">
         <img
           src={Logo}

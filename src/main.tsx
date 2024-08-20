@@ -8,7 +8,7 @@ import './index.css'
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <Suspense
     fallback={(
-      <div className="h-[100vh] w-[100vw] flex items-center justify-center bg-transparent">
+      <div className="h-full w-full flex items-center justify-center bg-transparent">
         <Spin size="large" />
       </div>
     )}
