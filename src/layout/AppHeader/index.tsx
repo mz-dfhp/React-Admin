@@ -31,7 +31,7 @@ export default function AppHeader({ collapsed, setCollapsed }: { collapsed: bool
         className={`cursor-pointer  text-[18px] ${`${collapsed ? 'icon-[bi--text-indent-left]' : 'icon-[bi--text-indent-right]'}`}`}
         onClick={() => setCollapsed(!collapsed)}
       />
-      <div className="ml-auto flex items-center justify-around px-[25px]">
+      <div className="ml-auto flex items-center justify-around px-[25px] w-0 overflow-hidden md:w-auto md:overflow-visible">
         <Tooltip title={locale}>
           <div
             className="icon-[bi--arrow-left-right] ml-[20px] cursor-pointer transition-all hover:scale-[1.2]"
