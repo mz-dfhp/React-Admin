@@ -1,4 +1,4 @@
-import { useCallback, useContext } from 'react'
+import { useContext } from 'react'
 import { useFullscreen } from 'ahooks'
 
 import type { MenuProps } from 'antd'
@@ -25,47 +25,42 @@ export default function AppHeader({ collapsed, setCollapsed }: { collapsed: bool
       window.location.reload()
     }
   }
-  const beforeChangeDark = useCallback(
-    () => {
-      return new Promise<boolean>((resolve) => {
-        const isAppearanceTransition = !!(document.startViewTransition) && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
-        if (!isAppearanceTransition) {
-          resolve(true)
-          return
-        }
+  function changeDark() {
+    const isAppearanceTransition = !!(document.startViewTransition) && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (!isAppearanceTransition) {
+      toggleDark()
+      return
+    }
 
-        const switchElement = document.querySelector('.dark-switch')!
-        const rect = switchElement.getBoundingClientRect()
-        const x = rect.left + rect.width / 2
-        const y = rect.top + rect.height / 2
+    const switchElement = document.querySelector('.dark-switch')!
+    const rect = switchElement.getBoundingClientRect()
+    const x = rect.left + rect.width / 2
+    const y = rect.top + rect.height / 2
 
-        const endRadius = Math.hypot(
-          Math.max(x, innerWidth - x),
-          Math.max(y, innerHeight - y),
-        )
-        const transition = document.startViewTransition(async () => {
-          resolve(true)
-        })
-        transition.ready.then(() => {
-          const clipPath = [
-            `circle(0px at ${x}px ${y}px)`,
-            `circle(${endRadius}px at ${x}px ${y}px)`,
-          ]
-          document.documentElement.animate(
-            {
-              clipPath: !isDark ? [...clipPath].reverse() : clipPath,
-            },
-            {
-              duration: 400,
-              easing: 'ease-in',
-              pseudoElement: !isDark ? '::view-transition-old(root)' : '::view-transition-new(root)',
-            },
-          )
-        })
-      })
-    },
-    [isDark],
-  )
+    const endRadius = Math.hypot(
+      Math.max(x, innerWidth - x),
+      Math.max(y, innerHeight - y),
+    )
+    const transition = document.startViewTransition(async () => {
+      toggleDark()
+    })
+    transition.ready.then(() => {
+      const clipPath = [
+        `circle(0px at ${x}px ${y}px)`,
+        `circle(${endRadius}px at ${x}px ${y}px)`,
+      ]
+      document.documentElement.animate(
+        {
+          clipPath: !isDark ? [...clipPath].reverse() : clipPath,
+        },
+        {
+          duration: 400,
+          easing: 'ease-in',
+          pseudoElement: !isDark ? '::view-transition-old(root)' : '::view-transition-new(root)',
+        },
+      )
+    })
+  }
   return (
     <div className="h-[60px] flex items-center justify-between px-[20px]">
       <div
@@ -92,7 +87,7 @@ export default function AppHeader({ collapsed, setCollapsed }: { collapsed: bool
         </div>
         <div
           className={`${isDark ? 'icon-[bi--moon]' : 'icon-[bi--sun]'} dark-switch ml-[20px]  cursor-pointer hover:scale-[1.2] transition-all`}
-          onClick={() => { beforeChangeDark().then(() => toggleDark()) }}
+          onClick={changeDark}
         >
         </div>
         <div
