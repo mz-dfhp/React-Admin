@@ -8,8 +8,6 @@
       content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
     <title>React-Admin</title>
-    <script type="module" crossorigin src="/React-Admin/assets/js/index-Doz5PMXO.js"></script>
-    <link rel="stylesheet" crossorigin href="/React-Admin/assets/css/index-By7K-1UN.css">
   </head>
   <style>
     :root {
@@ -21,7 +19,7 @@
       margin: 0;
     }
 
-    .loading-container {
+    .spin-container {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -33,8 +31,8 @@
     .ant-spin-dot {
       position: relative;
       display: inline-block;
-      width: 60px;
-      height: 60px;
+      width: var(--cube-size);
+      height: var(--cube-size);
       font-size: 20px;
     }
 
@@ -97,10 +95,275 @@
       }
     }
   </style>
+  <style>
+    :root {
+      --cube-size: 60px;
+    }
+
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .cube-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 100vw;
+      height: 100vh;
+      background: #151515;
+    }
+
+    .cube,
+    .cube * {
+      position: absolute;
+      width: var(--cube-size);
+      height: var(--cube-size);
+    }
+
+    .cube .sides * {
+      box-sizing: border-box;
+      border: 0.12rem solid white;
+      border-radius: 0.25rem;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    @keyframes rotate {
+      0% {
+        transform: rotateX(-37.5deg) rotateY(45deg);
+      }
+
+      50% {
+        transform: rotateX(-37.5deg) rotateY(405deg);
+      }
+
+      100% {
+        transform: rotateX(-37.5deg) rotateY(405deg);
+      }
+    }
+
+    .sides {
+      animation: rotate 3s ease infinite;
+      animation-delay: 0.8s;
+      transform-style: preserve-3d;
+      transform: rotateX(-37.5deg) rotateY(45deg);
+    }
+
+    .cube .sides .top {
+      animation: top-animation 3s ease infinite;
+      animation-delay: 0ms;
+      transform: rotateX(90deg) translateZ(var(--cube-size));
+      animation-fill-mode: forwards;
+      transform-origin: 50% 50%;
+    }
+
+    @keyframes top-animation {
+      0% {
+        opacity: 1;
+        transform: rotateX(90deg) translateZ(var(--cube-size));
+      }
+
+      20% {
+        opacity: 1;
+        transform: rotateX(90deg) translateZ(calc(var(--cube-size) / 2));
+      }
+
+      70% {
+        opacity: 1;
+        transform: rotateX(90deg) translateZ(calc(var(--cube-size) / 2));
+      }
+
+      90% {
+        opacity: 1;
+        transform: rotateX(90deg) translateZ(var(--cube-size));
+      }
+
+      100% {
+        opacity: 1;
+        transform: rotateX(90deg) translateZ(var(--cube-size));
+      }
+    }
+
+    .cube .sides .bottom {
+      animation: bottom-animation 3s ease infinite;
+      animation-delay: 0ms;
+      transform: rotateX(-90deg) translateZ(var(--cube-size));
+      animation-fill-mode: forwards;
+      transform-origin: 50% 50%;
+    }
+
+    @keyframes bottom-animation {
+      0% {
+        opacity: 1;
+        transform: rotateX(-90deg) translateZ(var(--cube-size));
+      }
+
+      20% {
+        opacity: 1;
+        transform: rotateX(-90deg) translateZ(calc(var(--cube-size) / 2));
+      }
+
+      70% {
+        opacity: 1;
+        transform: rotateX(-90deg) translateZ(calc(var(--cube-size) / 2));
+      }
+
+      90% {
+        opacity: 1;
+        transform: rotateX(-90deg) translateZ(var(--cube-size));
+      }
+
+      100% {
+        opacity: 1;
+        transform: rotateX(-90deg) translateZ(var(--cube-size));
+      }
+    }
+
+    .cube .sides .front {
+      animation: front-animation 3s ease infinite;
+      animation-delay: 100ms;
+      transform: rotateY(0deg) translateZ(var(--cube-size));
+      animation-fill-mode: forwards;
+      transform-origin: 50% 50%;
+    }
+
+    @keyframes front-animation {
+      0% {
+        opacity: 1;
+        transform: rotateY(0deg) translateZ(var(--cube-size));
+      }
+
+      20% {
+        opacity: 1;
+        transform: rotateY(0deg) translateZ(calc(var(--cube-size) / 2));
+      }
+
+      70% {
+        opacity: 1;
+        transform: rotateY(0deg) translateZ(calc(var(--cube-size) / 2));
+      }
+
+      90% {
+        opacity: 1;
+        transform: rotateY(0deg) translateZ(var(--cube-size));
+      }
+
+      100% {
+        opacity: 1;
+        transform: rotateY(0deg) translateZ(var(--cube-size));
+      }
+    }
+
+    .cube .sides .back {
+      animation: back-animation 3s ease infinite;
+      animation-delay: 100ms;
+      transform: rotateY(-180deg) translateZ(var(--cube-size));
+      animation-fill-mode: forwards;
+      transform-origin: 50% 50%;
+    }
+
+    @keyframes back-animation {
+      0% {
+        opacity: 1;
+        transform: rotateY(-180deg) translateZ(var(--cube-size));
+      }
+
+      20% {
+        opacity: 1;
+        transform: rotateY(-180deg) translateZ(calc(var(--cube-size) / 2));
+      }
+
+      70% {
+        opacity: 1;
+        transform: rotateY(-180deg) translateZ(calc(var(--cube-size) / 2));
+      }
+
+      90% {
+        opacity: 1;
+        transform: rotateY(-180deg) translateZ(var(--cube-size));
+      }
+
+      100% {
+        opacity: 1;
+        transform: rotateY(-180deg) translateZ(var(--cube-size));
+      }
+    }
+
+    .cube .sides .left {
+      animation: left-animation 3s ease infinite;
+      animation-delay: 100ms;
+      transform: rotateY(-90deg) translateZ(var(--cube-size));
+      animation-fill-mode: forwards;
+      transform-origin: 50% 50%;
+    }
+
+    @keyframes left-animation {
+      0% {
+        opacity: 1;
+        transform: rotateY(-90deg) translateZ(var(--cube-size));
+      }
+
+      20% {
+        opacity: 1;
+        transform: rotateY(-90deg) translateZ(calc(var(--cube-size) / 2));
+      }
+
+      70% {
+        opacity: 1;
+        transform: rotateY(-90deg) translateZ(calc(var(--cube-size) / 2));
+      }
+
+      90% {
+        opacity: 1;
+        transform: rotateY(-90deg) translateZ(var(--cube-size));
+      }
+
+      100% {
+        opacity: 1;
+        transform: rotateY(-90deg) translateZ(var(--cube-size));
+      }
+    }
+
+    .cube .sides .right {
+      animation: right-animation 3s ease infinite;
+      animation-delay: 100ms;
+      transform: rotateY(90deg) translateZ(var(--cube-size));
+      animation-fill-mode: forwards;
+      transform-origin: 50% 50%;
+    }
+
+    @keyframes right-animation {
+      0% {
+        opacity: 1;
+        transform: rotateY(90deg) translateZ(var(--cube-size));
+      }
+
+      20% {
+        opacity: 1;
+        transform: rotateY(90deg) translateZ(calc(var(--cube-size) / 2));
+      }
+
+      70% {
+        opacity: 1;
+        transform: rotateY(90deg) translateZ(calc(var(--cube-size) / 2));
+      }
+
+      90% {
+        opacity: 1;
+        transform: rotateY(90deg) translateZ(var(--cube-size));
+      }
+
+      100% {
+        opacity: 1;
+        transform: rotateY(90deg) translateZ(var(--cube-size));
+      }
+    }
+  </style>
 
   <body>
     <div id="root">
-      <div class="loading-container">
+      <!-- <div class="spin-container">
         <span class="ant-spin-dot ant-spin-dot-spin">
           <i></i>
           <i></i>
@@ -108,7 +371,20 @@
           <i></i>
         </span>
         <div class="ant-spin-text">React-Admin</div>
+      </div> -->
+      <div class="cube-container">
+        <div class="cube">
+          <div class="sides">
+            <div class="top"></div>
+            <div class="right"></div>
+            <div class="bottom"></div>
+            <div class="left"></div>
+            <div class="front"></div>
+            <div class="back"></div>
+          </div>
+        </div>
       </div>
     </div>
+    <!-- <script type="module" src="/src/main.tsx"></script> -->
   </body>
 </html>
