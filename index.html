@@ -8,95 +8,9 @@
       content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
     <title>React-Admin</title>
-    <script type="module" crossorigin src="/React-Admin/assets/js/index-Dq78ZCN1.js"></script>
-    <link rel="stylesheet" crossorigin href="/React-Admin/assets/css/index-BIVzS0J4.css">
+    <script type="module" crossorigin src="/React-Admin/assets/js/index-PLMM11RV.js"></script>
+    <link rel="stylesheet" crossorigin href="/React-Admin/assets/css/index--KOWr4H5.css">
   </head>
-  <style>
-    :root {
-      --theme-color: #1677ff;
-    }
-
-    * {
-      padding: 0;
-      margin: 0;
-    }
-
-    .spin-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      width: 100vw;
-      height: 100vh;
-    }
-
-    .ant-spin-dot {
-      position: relative;
-      display: inline-block;
-      width: var(--cube-size);
-      height: var(--cube-size);
-      font-size: 20px;
-    }
-
-    .ant-spin-dot-spin {
-      transform: rotate(45deg);
-      animation: ant-rotate 1.2s infinite linear;
-    }
-
-    .ant-spin-dot i {
-      position: absolute;
-      display: block;
-      width: 27px;
-      height: 27px;
-      background-color: var(--theme-color);
-      border-radius: 100%;
-      opacity: 0.3;
-      transform: scale(0.75);
-      animation: ant-spin-move 1s infinite linear alternate;
-      transform-origin: 50% 50%;
-    }
-
-    .ant-spin-dot:nth-child(1) {
-      top: 0;
-      left: 0;
-    }
-
-    .ant-spin-dot :nth-child(2) {
-      top: 0;
-      right: 0;
-      animation-delay: 0.4s;
-    }
-
-    .ant-spin-dot :nth-child(3) {
-      right: 0;
-      bottom: 0;
-      animation-delay: 0.8s;
-    }
-
-    .ant-spin-dot :nth-child(4) {
-      bottom: 0;
-      left: 0;
-      animation-delay: 1.2s;
-    }
-
-    .ant-spin-text {
-      margin-top: 20px;
-      font-size: 22px;
-      color: #333;
-    }
-
-    @keyframes ant-spin-move {
-      to {
-        opacity: 1;
-      }
-    }
-
-    @keyframes ant-rotate {
-      to {
-        transform: rotate(405deg);
-      }
-    }
-  </style>
   <style>
     :root {
       --cube-size: 60px;
@@ -106,14 +20,20 @@
       padding: 0;
       margin: 0;
     }
+    html,
+    body,
+    #root {
+      width: 100%;
+      height: 100%;
+    }
 
-    .cube-container {
+    .container {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       background: #151515;
     }
 
@@ -365,16 +285,7 @@
 
   <body>
     <div id="root">
-      <!-- <div class="spin-container">
-        <span class="ant-spin-dot ant-spin-dot-spin">
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-        </span>
-        <div class="ant-spin-text">React-Admin</div>
-      </div> -->
-      <div class="cube-container">
+      <div class="container">
         <div class="cube">
           <div class="sides">
             <div class="top"></div>
